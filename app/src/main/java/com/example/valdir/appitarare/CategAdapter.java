@@ -82,7 +82,7 @@ public class CategAdapter extends RecyclerView.Adapter<CategAdapter.ViewHolder>{
         public ViewHolder(View itemView) {
             super(itemView);
 
-            TvItemCategView = (TextView) itemView.findViewById(R.id.tx_item_categ);
+            TvItemCategView = (TextView) itemView.findViewById(R.id.tv_item_categ);
             //listItemNumberView
             // COMPLETED (7) Call setOnClickListener on the View passed into the constructor (use 'this' as the OnClickListener)
             itemView.setOnClickListener(this);
@@ -94,9 +94,8 @@ public class CategAdapter extends RecyclerView.Adapter<CategAdapter.ViewHolder>{
          * @param listIndex Position of the item in the list
          */
         void bind(int listIndex) {
-            Log.v("asdfas", listCateg.get(0));
+
             TvItemCategView.setText(listCateg.get(listIndex).toString());
-            Log.v("asdfas", TvItemCategView.toString());
         }
 
         @Override

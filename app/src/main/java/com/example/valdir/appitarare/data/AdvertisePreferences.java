@@ -9,7 +9,7 @@ import com.example.valdir.appitarare.R;
  * Created by VALDIR on 29/06/2018.
  */
 
-public class AnunPreferences {
+public class AdvertisePreferences {
     private static final String KEY_PREF_MENU = "id_menu_pref";
     private static final String KEY_ORDER = "order_avaliado";
 

@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:text="descricao" />
             <TextView
-                android:id="@+id/tv_avaliado"
+                android:id="@+id/tv_rating"
                 android:layout_margin="5dp"
                 android:textSize="23dp"
                 android:layout_width="match_parent"

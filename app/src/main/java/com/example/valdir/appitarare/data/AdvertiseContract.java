@@ -6,7 +6,7 @@ import android.provider.BaseColumns;
  * Created by VALDIR on 09/07/2018.
  */
 
-public class AnuncioContract{
+public class AdvertiseContract {
 
     public static final class AnuncioEntrada implements BaseColumns{
         public static final String NOME_TABELA = "tabAnuncios";

@@ -18,7 +18,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="180dp">
                 <ImageView
-                    android:id="@+id/iv_anuncio"
+                    android:id="@+id/iv_advertisement"
                     android:layout_width="220dp"
                     android:layout_height="match_parent"
                     android:src="@drawable/empresa1" />
@@ -52,7 +52,7 @@
             android:padding="10dp">
             <TextView
                 android:paddingTop="10dp"
-                android:id="@+id/tv_title_anuncio"
+                android:id="@+id/tv_title_advertisement"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -60,7 +60,7 @@
                 android:textSize="21sp"
                 android:text="EMPRESA 01    "/>
             <TextView
-            style="@style/anuncios_desc_tv"
+            style="@style/advertisement_desc_tv"
             android:textSize="18sp"
             android:id="@+id/tv_desc_anuncio"
             android:text="Descrição da empresa "/>
@@ -68,7 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
-                android:id="@+id/avalidado"
+                android:id="@+id/rating"
                 android:text="Avaliado"/>
             <View
                 android:layout_width="match_parent"
@@ -79,41 +79,41 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
-                    style="@style/anuncios_titles_tv"
+                    style="@style/advertisement_titles_tv"
                     android:text="Possui WIFI: "/>
                 <TextView
                     android:textSize="20dp"
-                    style="@style/anuncios_desc_tv"
+                    style="@style/advertisement_desc_tv"
                     android:text="Sim"/>
             </LinearLayout>
             <TextView
-                style="@style/anuncios_titles_tv"
+                style="@style/advertisement_titles_tv"
                 android:paddingTop="10dp"
                 android:id="@+id/tv__title_hr_funcionam"
                 android:text="Horário de Funcionamento:"/>
 
             <TextView
-                android:id="@+id/tv_horafuncio_anuncio"
-                style="@style/anuncios_desc_tv"
+                android:id="@+id/tv_horafuncio_advertisement"
+                style="@style/advertisement_desc_tv"
                 android:text="Seg a Sex: 8h às 18h" />
             <TextView
-                style="@style/anuncios_titles_tv"
+                style="@style/advertisement_titles_tv"
                 android:text="Formas de pagamentos:"/>
 
             <TextView
-                style="@style/anuncios_desc_tv"
-                android:id="@+id/tv_formas_pag_anuncio"
+                style="@style/advertisement_desc_tv"
+                android:id="@+id/tv_formas_pag_advertisement"
                 android:text="Dinheiro - Cartão de Credito"/>
             <TextView
-                style="@style/anuncios_titles_tv"
+                style="@style/advertisement_titles_tv"
                 android:text="Telefone para Contato:"/>
 
             <TextView
-                style="@style/anuncios_desc_tv"
-                android:id="@+id/tv_tel_contato_anuncio"
+                style="@style/advertisement_desc_tv"
+                android:id="@+id/tv_tel_contato_advertisement"
                 android:text="(15) 3531 - 1748"/>
             <TextView
-                style="@style/anuncios_titles_tv"
+                style="@style/advertisement_titles_tv"
                 android:text="Localização:" />
             <ImageView
                 android:layout_width="match_parent"

@@ -15,7 +15,7 @@ import java.util.Comparator;
  * Created by VALDIR on 13/07/2018.
  */
 
-public class CategoriasActivity extends AppCompatActivity implements CategAdapter.ListItemClickListener{
+public class CategoryActivity extends AppCompatActivity implements CategAdapter.ListItemClickListener{
 
     private Toast mToast;
     private ArrayList<String> listCateg;
@@ -24,7 +24,7 @@ public class CategoriasActivity extends AppCompatActivity implements CategAdapte
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_categorias);
+        setContentView(R.layout.activity_category);
 
         loadCategoriasData();
     }
@@ -43,7 +43,7 @@ public class CategoriasActivity extends AppCompatActivity implements CategAdapte
 
         mToast.show();
 
-        Intent startCategorActivity = new Intent(this, AnunciosActivity.class);
+        Intent startCategorActivity = new Intent(this, AllAdvertisementActivity.class);
 
         startCategorActivity.putExtra(Intent.EXTRA_TEXT, OpcClicked);
 
@@ -52,7 +52,7 @@ public class CategoriasActivity extends AppCompatActivity implements CategAdapte
 
     private void loadCategoriasData() {
 
-        lvCateg = (RecyclerView) findViewById(R.id.rv_categorias);
+        lvCateg = (RecyclerView) findViewById(R.id.rv_category);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         lvCateg.setLayoutManager(layoutManager);

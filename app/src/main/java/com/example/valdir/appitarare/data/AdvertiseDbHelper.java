@@ -4,18 +4,18 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.valdir.appitarare.data.AnuncioContract.AnuncioEntrada;
+import com.example.valdir.appitarare.data.AdvertiseContract.AnuncioEntrada;
 
 /**
  * Created by VALDIR on 09/07/2018.
  */
 
-public class AnuncioDbHelper extends SQLiteOpenHelper {
+public class AdvertiseDbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "anuncio.db";
     private static int DATABASE_VERSION = 1;
 
-    public AnuncioDbHelper(Context context) {
+    public AdvertiseDbHelper(Context context) {
         super(context, DATABASE_NAME, null,  DATABASE_VERSION);
     }
 

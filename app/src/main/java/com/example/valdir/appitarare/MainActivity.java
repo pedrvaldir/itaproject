@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity{
         btActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent startCategorActivity = new Intent(MainActivity.this, CategoriasActivity.class);
+                Intent startCategorActivity = new Intent(MainActivity.this, CategoryActivity.class);
                 startActivity(startCategorActivity);
 
 

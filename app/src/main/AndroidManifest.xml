@@ -23,9 +23,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CategoriasActivity" />
-        <activity android:name=".AnunciosActivity" />
-        <activity android:name=".AnuncioActivity"></activity>
+        <activity android:name=".CategoryActivity" />
+        <activity android:name=".AllAdvertisementActivity" />
+        <activity android:name=".AdvertisementActivity"></activity>
     </application>
 
 </manifest>

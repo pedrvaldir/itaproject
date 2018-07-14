@@ -7,7 +7,7 @@ import android.os.Parcelable;
  * Created by VALDIR on 13/07/2018.
  */
 
-public class Anuncio implements Parcelable {
+public class Advertisement implements Parcelable {
     private String mTitulo;
     private String mDescricao;
     private String mHorarAtendimento;
@@ -19,7 +19,7 @@ public class Anuncio implements Parcelable {
     private Boolean mWhatsApp;
 
 
-    public Anuncio(String titulo, String descricao, String atendimento, String formasPagamento, String contato, int img, int avaliado, Boolean wifi, Boolean whatsApp) {
+    public Advertisement(String titulo, String descricao, String atendimento, String formasPagamento, String contato, int img, int avaliado, Boolean wifi, Boolean whatsApp) {
         this.mTitulo = titulo;
         this.mDescricao = descricao;
         this.mHorarAtendimento = atendimento;
@@ -31,7 +31,7 @@ public class Anuncio implements Parcelable {
         this.mWhatsApp = whatsApp;
     }
 
-    protected Anuncio(Parcel in) {
+    protected Advertisement(Parcel in) {
         mTitulo = in.readString();
         mDescricao = in.readString();
         mHorarAtendimento = in.readString();
@@ -41,15 +41,15 @@ public class Anuncio implements Parcelable {
         mAvaliado = in.readInt();
     }
 
-    public static final Creator<Anuncio> CREATOR = new Creator<Anuncio>() {
+    public static final Creator<Advertisement> CREATOR = new Creator<Advertisement>() {
         @Override
-        public Anuncio createFromParcel(Parcel in) {
-            return new Anuncio(in);
+        public Advertisement createFromParcel(Parcel in) {
+            return new Advertisement(in);
         }
 
         @Override
-        public Anuncio[] newArray(int size) {
-            return new Anuncio[size];
+        public Advertisement[] newArray(int size) {
+            return new Advertisement[size];
         }
     };
 
