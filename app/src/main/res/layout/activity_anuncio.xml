@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp">
+        <HorizontalScrollView
+            android:id="@+id/horizontalsrollview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="180dp">
+                <ImageView
+                    android:id="@+id/iv_anuncio"
+                    android:layout_width="220dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/empresa1" />
+                <View
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#BBBBBB"/>
+                <ImageView
+                    android:layout_width="220dp"
+                    android:layout_height="match_parent"
+                    android:isScrollContainer="false"
+                    android:src="@drawable/empresa1"/>
+                <View
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#BBBBBB"/>
+                <ImageView
+                    android:layout_width="220dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/food" />
+            </LinearLayout>
+        </HorizontalScrollView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+            <TextView
+                android:paddingTop="10dp"
+                android:id="@+id/tv_title_anuncio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="21sp"
+                android:text="EMPRESA 01    "/>
+            <TextView
+            style="@style/anuncios_desc_tv"
+            android:textSize="18sp"
+            android:id="@+id/tv_desc_anuncio"
+            android:text="Descrição da empresa "/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:id="@+id/avalidado"
+                android:text="Avaliado"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="15dp"
+                android:background="#BBBBBB"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    style="@style/anuncios_titles_tv"
+                    android:text="Possui WIFI: "/>
+                <TextView
+                    android:textSize="20dp"
+                    style="@style/anuncios_desc_tv"
+                    android:text="Sim"/>
+            </LinearLayout>
+            <TextView
+                style="@style/anuncios_titles_tv"
+                android:paddingTop="10dp"
+                android:id="@+id/tv__title_hr_funcionam"
+                android:text="Horário de Funcionamento:"/>
+
+            <TextView
+                android:id="@+id/tv_horafuncio_anuncio"
+                style="@style/anuncios_desc_tv"
+                android:text="Seg a Sex: 8h às 18h" />
+            <TextView
+                style="@style/anuncios_titles_tv"
+                android:text="Formas de pagamentos:"/>
+
+            <TextView
+                style="@style/anuncios_desc_tv"
+                android:id="@+id/tv_formas_pag_anuncio"
+                android:text="Dinheiro - Cartão de Credito"/>
+            <TextView
+                style="@style/anuncios_titles_tv"
+                android:text="Telefone para Contato:"/>
+
+            <TextView
+                style="@style/anuncios_desc_tv"
+                android:id="@+id/tv_tel_contato_anuncio"
+                android:text="(15) 3531 - 1748"/>
+            <TextView
+                style="@style/anuncios_titles_tv"
+                android:text="Localização:" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/ex_maps"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+
