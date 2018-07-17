@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "969054139704",
+    "firebase_url": "https://itarare-1530419471926.firebaseio.com",
+    "project_id": "itarare-1530419471926",
+    "storage_bucket": "itarare-1530419471926.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:969054139704:android:db4f03b886cf27ec",
+        "android_client_info": {
+          "package_name": "com.example.valdir.appitarare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "969054139704-1jna6tlrk1nmjdajuh431cf2hinpru3j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.valdir.appitarare",
+            "certificate_hash": "ec883920c36ecbf06f22f5512ab2e46abf871aec"
+          }
+        },
+        {
+          "client_id": "969054139704-tf6l1tklnqk2l001b4m7ingsi0ndtnmt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3z5LkETQZBJRrBreRlWZeRiFalRe-DrE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "969054139704-tf6l1tklnqk2l001b4m7ingsi0ndtnmt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

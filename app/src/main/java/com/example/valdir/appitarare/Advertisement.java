@@ -15,11 +15,11 @@ public class Advertisement implements Parcelable {
     private String mTelContato;
     private int mAvaliado;
     private  int mImg;
-    private Boolean mWifi;
-    private Boolean mWhatsApp;
+    private int mWifi;
+    private int mWhatsApp;
 
 
-    public Advertisement(String titulo, String descricao, String atendimento, String formasPagamento, String contato, int img, int avaliado, Boolean wifi, Boolean whatsApp) {
+    public Advertisement(String titulo, String descricao, String atendimento, String formasPagamento, String contato, int img, int avaliado, int    wifi, int whatsApp) {
         this.mTitulo = titulo;
         this.mDescricao = descricao;
         this.mHorarAtendimento = atendimento;
@@ -29,6 +29,10 @@ public class Advertisement implements Parcelable {
         this.mAvaliado = avaliado;
         this.mWifi = wifi;
         this.mWhatsApp = whatsApp;
+    }
+
+    public Advertisement(){
+
     }
 
     protected Advertisement(Parcel in) {
@@ -80,11 +84,11 @@ public class Advertisement implements Parcelable {
         return mTelContato;
     }
 
-    public Boolean getmWhatsApp() {
+    public int getmWhatsApp() {
         return mWhatsApp;
     }
 
-    public Boolean getmWifi() {
+    public int getmWifi() {
         return mWifi;
     }
 
@@ -107,5 +111,42 @@ public class Advertisement implements Parcelable {
         parcel.writeInt(mImg);
         parcel.writeInt(mAvaliado);
 
+    }
+
+
+    public void setmTitulo(String mTitulo) {
+        this.mTitulo = mTitulo;
+    }
+
+    public void setmDescricao(String mDescricao) {
+        this.mDescricao = mDescricao;
+    }
+
+    public void setmHorarAtendimento(String mHorarAtendimento) {
+        this.mHorarAtendimento = mHorarAtendimento;
+    }
+
+    public void setmFormasPagamento(String mFormasPagamento) {
+        this.mFormasPagamento = mFormasPagamento;
+    }
+
+    public void setmTelContato(String mTelContato) {
+        this.mTelContato = mTelContato;
+    }
+
+    public void setmAvaliado(int mAvaliado) {
+        this.mAvaliado = mAvaliado;
+    }
+
+    public void setmImg(int mImg) {
+        this.mImg = mImg;
+    }
+
+    public void setmWifi(int mWifi) {
+        this.mWifi = mWifi;
+    }
+
+    public void setmWhatsApp(int mWhatsApp) {
+        this.mWhatsApp = mWhatsApp;
     }
 }

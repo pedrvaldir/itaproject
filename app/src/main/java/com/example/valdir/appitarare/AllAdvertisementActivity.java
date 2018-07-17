@@ -3,6 +3,7 @@ package com.example.valdir.appitarare;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,15 +11,26 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.valdir.appitarare.data.AdvertiseContract;
 import com.example.valdir.appitarare.data.AdvertisePreferences;
 import com.example.valdir.appitarare.data.AdvertiseDbHelper;
 import com.example.valdir.appitarare.data.TestUtil;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.FirebaseOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.UUID;
 
 /**
  * Created by VALDIR on 13/07/2018.
@@ -30,17 +42,21 @@ public class AllAdvertisementActivity extends AppCompatActivity implements Adver
     private RecyclerView mRecyViewAnun;
     private String opcClicked;
     private Toast mToast;
-
+    private DatabaseUtils dataBaseUtils;
     private ArrayList<Advertisement> listaAdvertisements = new ArrayList<>();
     private SQLiteDatabase mDb;
     private Cursor mCursor;
+    private static Advertisement mAdvertisement;
+    DatabaseReference eventReference;
 
+    private static final String ADVERTISEMENT = "advertisement";
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putParcelableArrayList("anuncios", listaAdvertisements);
         super.onSaveInstanceState(outState);
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
@@ -132,32 +148,30 @@ public class AllAdvertisementActivity extends AppCompatActivity implements Adver
     }
     private void loadAnunciosData(Cursor cursor){
 
-        // Boolean orderByAvaliad = AdvertisePreferences.getPreferedOrderAvaliad(this);
+        eventReference.child("anuncio").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot objSnapShot : dataSnapshot.getChildren()){
+                    Advertisement adv = objSnapShot.getValue(Advertisement.class);
 
-        mAdapterAnun = new AdvertAdapter(this, mCursor);
+                    listaAdvertisements.add(adv);
+                }
 
-        AdvertAdapter mAdapterAnun = new AdvertAdapter(this, mCursor);
+
+                mAdapterAnun = new AdvertAdapter(this, listaAdvertisements);
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
 
         mRecyViewAnun.setAdapter(mAdapterAnun);
 
-    }
-
-    class orderAnuncios implements Comparator<Advertisement> {
-
-        @Override
-        public int compare(Advertisement advertisement, Advertisement t1) {
-            if (advertisement.getAvaliado() < t1.getAvaliado())return  +1;
-            else if(advertisement.getAvaliado() > t1.getAvaliado()) return -1;
-            else return 0;
-        }
-    }
-
-    class orderAnunciosAlfa implements Comparator<Advertisement>{
-
-        @Override
-        public int compare(Advertisement advertisement, Advertisement t1) {
-            return advertisement.getTitulo().compareTo(t1.getTitulo());
-        }
     }
 
     private Cursor retornoTodosAnuncios(){
@@ -173,6 +187,24 @@ public class AllAdvertisementActivity extends AppCompatActivity implements Adver
 
     public long addAnuncioTest(){
 
+        eventReference = FirebaseDatabase.getInstance().getReference();
+
+        Advertisement newAdv = new Advertisement();
+
+        newAdv.setmTitulo("asdfasfd");
+        newAdv.setmDescricao("desc");
+        newAdv.setmFormasPagamento("dinheiro");
+        newAdv.setmHorarAtendimento("8h as sd98");
+        newAdv.setmWhatsApp(1);
+        newAdv.setmWifi(0);
+        newAdv.setmAvaliado(90);
+        newAdv.setmTelContato("asdfasfdasf");
+        newAdv.setmImg(12312312);
+
+        UUID _id = UUID.randomUUID();
+
+        eventReference.child("anuncio").child(_id.toString()).setValue(newAdv);
+
         ContentValues cv = new ContentValues();
 
         cv.put(AdvertiseContract.AnuncioEntrada.COLUNA_TITULO, "SUPERMERCADO JACKS");
@@ -187,6 +219,4 @@ public class AllAdvertisementActivity extends AppCompatActivity implements Adver
 
         return mDb.insert(AdvertiseContract.AnuncioEntrada.NOME_TABELA, null, cv);
     }
-
-
 }

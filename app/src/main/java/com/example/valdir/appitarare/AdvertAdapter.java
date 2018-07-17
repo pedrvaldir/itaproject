@@ -22,14 +22,13 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
 
     private static final String TAG = AdvertAdapter.class.getSimpleName();
 
-    private ArrayList<Advertisement> listAnunc;
+    private ArrayList<Advertisement> mListAnunc;
     final private ListItemAnunClickListener mOnClickListener;
     private Cursor mCursor;
 
-
-    public AdvertAdapter(ListItemAnunClickListener listner, Cursor cursor) {
+    public AdvertAdapter(ListItemAnunClickListener listner, ArrayList<Advertisement> listAnunc){
         mOnClickListener = listner;
-        mCursor = cursor;
+        mListAnunc = listAnunc;
     }
 
     public interface ListItemAnunClickListener {
