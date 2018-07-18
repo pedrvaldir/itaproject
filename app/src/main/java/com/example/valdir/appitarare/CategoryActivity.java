@@ -15,7 +15,7 @@ import java.util.Comparator;
  * Created by VALDIR on 13/07/2018.
  */
 
-public class CategoryActivity extends AppCompatActivity implements CategAdapter.ListItemClickListener{
+public class CategoryActivity extends AppCompatActivity implements CategAdapter.ListItemClickListener {
 
     private Toast mToast;
     private ArrayList<String> listCateg;

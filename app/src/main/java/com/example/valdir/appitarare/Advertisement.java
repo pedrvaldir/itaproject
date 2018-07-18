@@ -18,7 +18,6 @@ public class Advertisement implements Parcelable {
     private int mWifi;
     private int mWhatsApp;
 
-
     public Advertisement(String titulo, String descricao, String atendimento, String formasPagamento, String contato, int img, int avaliado, int    wifi, int whatsApp) {
         this.mTitulo = titulo;
         this.mDescricao = descricao;
@@ -57,40 +56,6 @@ public class Advertisement implements Parcelable {
         }
     };
 
-    public String getTitulo() {
-        return mTitulo;
-    }
-
-    public String getDescricao() {
-        return mDescricao;
-    }
-
-    public int getImg() {
-        return mImg;
-    }
-
-    public int getAvaliado(){
-        return mAvaliado;}
-
-    public String getmHorarAtendimento() {
-        return mHorarAtendimento;
-    }
-
-    public String getmFormasPagamento() {
-        return mFormasPagamento;
-    }
-
-    public String getmTelContato() {
-        return mTelContato;
-    }
-
-    public int getmWhatsApp() {
-        return mWhatsApp;
-    }
-
-    public int getmWifi() {
-        return mWifi;
-    }
 
     public String toString(){
         return mTitulo + "--" + mDescricao + "---";
@@ -112,7 +77,6 @@ public class Advertisement implements Parcelable {
         parcel.writeInt(mAvaliado);
 
     }
-
 
     public void setmTitulo(String mTitulo) {
         this.mTitulo = mTitulo;

@@ -7,10 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.example.valdir.appitarare.data.AdvertiseContract;
 
 import java.util.ArrayList;
 
@@ -23,8 +20,8 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
     private static final String TAG = AdvertAdapter.class.getSimpleName();
 
     private ArrayList<Advertisement> mListAnunc;
+    private Context context;
     final private ListItemAnunClickListener mOnClickListener;
-    private Cursor mCursor;
 
     public AdvertAdapter(ListItemAnunClickListener listner, ArrayList<Advertisement> listAnunc){
         mOnClickListener = listner;
@@ -51,30 +48,20 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
     @Override
     public void onBindViewHolder(AnunViewHolder holder, int position) {
 
-        if (!mCursor.moveToPosition(position))
-            return ;
-
-        //final long id = mCursor.getLong(mCursor.getColumnIndex(AdvertiseContract.AnuncioEntrada._ID));
-
         Log.d(TAG, "#" + position);
         holder.bind();
 
-    //    holder.itemView.setTag(id);
     }
 
     @Override
     public int getItemCount() {
-        return mCursor.getCount();
+        return 7;
     }
-
-
-
 
     class AnunViewHolder extends RecyclerView.ViewHolder
             implements View.OnClickListener {
         TextView nameTextView;
         TextView descTextView;
-        ImageView imageView;
         TextView avaliadoTextView;
 
 
@@ -83,17 +70,15 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
 
             nameTextView = (TextView) itemView.findViewById(R.id.tv_title_listitem);
             descTextView = (TextView) itemView.findViewById(R.id.tv_descri_listitem);
-            imageView = itemView.findViewById(R.id.iv_listitem);
             avaliadoTextView = itemView.findViewById(R.id.tv_rating);
 
             itemView.setOnClickListener(this);
         }
 
         void bind(){
-            nameTextView.setText(mCursor.getString(mCursor.getColumnIndex(AdvertiseContract.AnuncioEntrada.COLUNA_TITULO)));
-            descTextView.setText(mCursor.getString(mCursor.getColumnIndex(AdvertiseContract.AnuncioEntrada.COLUNA_DESCRICAO)));
-            imageView.setImageResource(mCursor.getInt(mCursor.getColumnIndex(AdvertiseContract.AnuncioEntrada.COLUNA_IMG)));
-            avaliadoTextView.setText("Avaliação:  "+ String.valueOf(mCursor.getInt(mCursor.getColumnIndex(AdvertiseContract.AnuncioEntrada.COLUNA_AVALIADO))));
+            nameTextView.setText("TITULO");
+            descTextView.setText("DESCRICAO");
+            avaliadoTextView.setText("AVALIDADO");
         }
 
         @Override

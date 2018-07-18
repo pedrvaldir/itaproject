@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * Created by VALDIR on 13/07/2018.
  */
 
-public class CategAdapter extends RecyclerView.Adapter<CategAdapter.ViewHolder>{
+public class CategAdapter extends RecyclerView.Adapter<CategAdapter.ViewHolder> {
 
 
     private static final String TAG = CategAdapter.class.getSimpleName();
@@ -76,6 +76,7 @@ public class CategAdapter extends RecyclerView.Adapter<CategAdapter.ViewHolder>{
          * Constructor for our ViewHolder. Within this constructor, we get a reference to our
          * TextViews and set an onClickListener to listen for clicks. Those will be handled in the
          * onClick method below.
+         *
          * @param itemView The View that you inflated in
          *                 {@link CategAdapter#onCreateViewHolder(ViewGroup, int)}
          */
@@ -91,6 +92,7 @@ public class CategAdapter extends RecyclerView.Adapter<CategAdapter.ViewHolder>{
         /**
          * A method we wrote for convenience. This method will take an integer as input and
          * use that integer to display the appropriate text within a list item.
+         *
          * @param listIndex Position of the item in the list
          */
         void bind(int listIndex) {

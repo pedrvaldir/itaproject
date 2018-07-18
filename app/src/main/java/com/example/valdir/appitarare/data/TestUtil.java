@@ -1,13 +1,18 @@
 package com.example.valdir.appitarare.data;
 
-import android.content.ContentValues;
-import android.database.SQLException;
+
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.valdir.appitarare.R;
+import com.example.valdir.appitarare.AdvertAdapter;
+import com.example.valdir.appitarare.Advertisement;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by VALDIR on 10/07/2018.
@@ -15,67 +20,56 @@ import java.util.List;
 
 public class TestUtil {
 
-    public static int ANUN_WI_OK = 1;
-    public static int ANUN_WTSAPP_OK = 1;
-    public static int ANUN_WI= 0;
-    public static int ANUN_WTSAPP = 0;
+    public static DatabaseReference eventReference;
+    public static ArrayList<Advertisement> listaAdvert;
+    public static int childCount;
 
-        public static void insertFakeData(SQLiteDatabase db){
+    public static void insertFakeData() {
 
+        eventReference = FirebaseDatabase.getInstance().getReference();
 
+        Advertisement newAdv = new Advertisement();
 
+        newAdv.setmTitulo("asdfasfd");
+        newAdv.setmDescricao("desc");
+        newAdv.setmFormasPagamento("dinheiro");
+        newAdv.setmHorarAtendimento("8h as sd98");
+        newAdv.setmWhatsApp(1);
+        newAdv.setmWifi(0);
+        newAdv.setmAvaliado(90);
+        newAdv.setmTelContato("asdfasfdasf");
+        newAdv.setmImg(12312312);
 
-        if(db == null){
-            return;
-        }
-        //create a list of fake guests
-        List<ContentValues> list = new ArrayList<ContentValues>();
+        UUID _id = UUID.randomUUID();
 
-        ContentValues cv = new ContentValues();
-        cv.put(AdvertiseContract.AnuncioEntrada.COLUNA_TITULO, "SUPERMERCADO JACKS");
-        cv.put(AdvertiseContract.AnuncioEntrada.COLUNA_DESCRICAO, "O MELHOR LUGAR PARA VC E SUA FAMILIA");
-        cv.put(AdvertiseContract.AnuncioEntrada.COLUNA_HORA_ATEND, "DAS 8H AS 18H, SEG A SEX");
-        cv.put(AdvertiseContract.AnuncioEntrada.COLUNA_FORMA_PAGAMENTO, "CARTÕES: MASTERCARD, ELO, VISA");
-        cv.put(AdvertiseContract.AnuncioEntrada.COLUNA_AVALIADO, 50);
-        cv.put(AdvertiseContract.AnuncioEntrada.COLUNA_TEL_CONTATO, "(15) 4567-9844");
-        cv.put(AdvertiseContract.AnuncioEntrada.COLUNA_IMG, R.drawable.food);
-        cv.put(AdvertiseContract.AnuncioEntrada.COLUNA_WHATSAPP, ANUN_WTSAPP_OK);
-        cv.put(AdvertiseContract.AnuncioEntrada.COLUNA_WIFI, ANUN_WI);
-        list.add(cv);
+        eventReference.child("anuncio").child(_id.toString()).setValue(newAdv);
 
-        cv = new ContentValues();
-        cv.put(AdvertiseContract.AnuncioEntrada.COLUNA_TITULO, "HOTEL FRYRED");
-        cv.put(AdvertiseContract.AnuncioEntrada.COLUNA_DESCRICAO, "TODO MEDICAMENTO VC ENCONTRA AQUI");
-        cv.put(AdvertiseContract.AnuncioEntrada.COLUNA_HORA_ATEND, "24H 7 VEZES POR SEMANA");
-        cv.put(AdvertiseContract.AnuncioEntrada.COLUNA_FORMA_PAGAMENTO, "CARTÕES: MASTERCARD, ELO, VISA");
-        cv.put(AdvertiseContract.AnuncioEntrada.COLUNA_AVALIADO, 10);
-        cv.put(AdvertiseContract.AnuncioEntrada.COLUNA_TEL_CONTATO, "(15) 4567-9844");
-        cv.put(AdvertiseContract.AnuncioEntrada.COLUNA_IMG, R.drawable.empresa1);
-        cv.put(AdvertiseContract.AnuncioEntrada.COLUNA_WHATSAPP, ANUN_WTSAPP_OK);
-        cv.put(AdvertiseContract.AnuncioEntrada.COLUNA_WIFI, ANUN_WI);
+    }
 
-        list.add(cv);
+    public static ArrayList<Advertisement> loadAnunciosData() {
 
+        listaAdvert = new ArrayList<>();
 
-        //insert all guests in one transaction
-        try
-        {
-            db.beginTransaction();
-            //clear the table first
-            db.delete (AdvertiseContract.AnuncioEntrada.NOME_TABELA,null,null);
-            //go through the list and add one by one
-            for(ContentValues c:list){
-                db.insert(AdvertiseContract.AnuncioEntrada.NOME_TABELA, null, c);
+        childCount = 0;
+
+        eventReference = FirebaseDatabase.getInstance().getReference();
+
+        eventReference.child("anuncio").addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot objSnapShot : dataSnapshot.getChildren()) {
+                    Advertisement adv = objSnapShot.getValue(Advertisement.class);
+                    childCount++;
+                    listaAdvert.add(adv);
+                }
             }
-            db.setTransactionSuccessful();
-        }
-        catch (SQLException e) {
-            //too bad :(
-        }
-        finally
-        {
-            db.endTransaction();
-        }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        return listaAdvert;
     }
 }
