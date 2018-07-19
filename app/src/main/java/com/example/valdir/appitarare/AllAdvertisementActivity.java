@@ -1,5 +1,6 @@
 package com.example.valdir.appitarare;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -24,16 +25,18 @@ import java.util.List;
  * Created by VALDIR on 13/07/2018.
  */
 
-public class AllAdvertisementActivity extends AppCompatActivity implements AdvertAdapter.ListItemAnunClickListener {
+public class AllAdvertisementActivity extends AppCompatActivity  {
 
     private AdvertAdapter mAdapterAnun;
     private RecyclerView mRecyViewAnun;
     private String opcClicked;
+    private Context mContext;
     private ArrayList<Advertisement> listaAdvertisements = new ArrayList<>();
     public static DatabaseReference eventReference;
     private ArrayList<Advertisement> mListAnunc;
     public int countList;
     public  Toast mToast;
+    private AdvertAdapter.ListItemAnunClickListener mClickListener;
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -45,7 +48,7 @@ public class AllAdvertisementActivity extends AppCompatActivity implements Adver
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_advertisement);
-
+        mContext = this;
         Intent intentStringClicked = getIntent();
 
         if (intentStringClicked.hasExtra(Intent.EXTRA_TEXT)) {
@@ -59,33 +62,60 @@ public class AllAdvertisementActivity extends AppCompatActivity implements Adver
 
         mRecyViewAnun.setHasFixedSize(true);
 
-        mListAnunc = TestUtil.loadAnunciosData();
+        mClickListener = newListener();
+        loadAnunciosData();
 
-        mAdapterAnun = new AdvertAdapter(this, mListAnunc);
 
-        mRecyViewAnun.setAdapter(mAdapterAnun);
     }
 
-    @Override
-    public void onListItemClick(int clickedItemIndex) {
+    private AdvertAdapter.ListItemAnunClickListener newListener() {
+        return new AdvertAdapter.ListItemAnunClickListener(){
 
+            @Override
+            public void onListItemClick(int clickedItemIndex) {
+                String returns = mListAnunc.get(clickedItemIndex).getmId();
 
-        String returns = mListAnunc.get(clickedItemIndex).getmId();
+                Intent startActivityAnuncioCompteted = new Intent(mContext, AdvertisementActivity.class);
 
-        Intent startActivityAnuncioCompteted = new Intent(this, AdvertisementActivity.class);
+                startActivityAnuncioCompteted.putExtra(Intent.EXTRA_TEXT, returns);
 
-        startActivityAnuncioCompteted.putExtra(Intent.EXTRA_TEXT, returns);
+                startActivity(startActivityAnuncioCompteted);
+            }
+        };
+    }
 
-        startActivity(startActivityAnuncioCompteted);
+    private void loadAnunciosData() {
+        final ArrayList<Advertisement> listaAdvert = new ArrayList<>();
 
+         final long[] childCount = {0};
 
-        // COMPLETED (12) Show a Toast when an item is clicked, displaying that item number that was clicked
-        /*
-         * Create a Toast and store it in our Toast field.
-         * The Toast that shows up will have a message similar to the following:
-         *
-         *                     Item #42 clicked.
-         */
+        eventReference = FirebaseDatabase.getInstance().getReference();
+
+        eventReference.child("anuncio").addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot objSnapShot : dataSnapshot.getChildren()) {
+                    Advertisement adv = objSnapShot.getValue(Advertisement.class);
+                    childCount[0]++;
+                    listaAdvert.add(adv);
+
+                }
+
+                if (childCount[0] == dataSnapshot.getChildrenCount()){
+
+                    mAdapterAnun = new AdvertAdapter(mClickListener, listaAdvert);
+
+                    mRecyViewAnun.setAdapter(mAdapterAnun);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
     }
 

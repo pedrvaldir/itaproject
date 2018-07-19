@@ -2,6 +2,7 @@ package com.example.valdir.appitarare;
 
 import android.content.Context;
 import android.database.Cursor;
+
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -64,7 +65,7 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
 
     @Override
     public int getItemCount() {
-        return 7;
+        return mListAnunc.size();
     }
 
 
