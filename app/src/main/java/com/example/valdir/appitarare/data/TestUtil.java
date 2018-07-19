@@ -24,7 +24,7 @@ import java.util.UUID;
  * Created by VALDIR on 10/07/2018.
  */
 
-public class TestUtil extends AsyncTask{
+public class TestUtil{
 
     public static int ANUN_WI_OK = 1;
     public static int ANUN_WTSAPP_OK = 1;
@@ -44,15 +44,15 @@ public class TestUtil extends AsyncTask{
         UUID _id = UUID.randomUUID();
 
         newAdv.setUid(_id.toString());
-        newAdv.setmTitulo("asdfasfd");
-        newAdv.setmDescricao("desc");
-        newAdv.setmFormasPagamento("dinheiro");
-        newAdv.setmHorarAtendimento("8h as sd98");
-        newAdv.setmWhatsApp(1);
-        newAdv.setmWifi(0);
+        newAdv.setmTitulo("EMPRESA 8");
+        newAdv.setmDescricao("Venha conhecer nosso ambiente .....");
+        newAdv.setmHorarAtendimento("8h as 18h");
+        newAdv.setmFormasPagamento("dinheiro e cartões");
+        newAdv.setmTelContato("15 3531- 1748");
         newAdv.setmAvaliado(90);
-        newAdv.setmTelContato("asdfasfdasf");
         newAdv.setmImg(12312312);
+        newAdv.setmWifi(0);
+        newAdv.setmWhatsApp(1);
 
         eventReference.child("anuncio").child(_id.toString()).setValue(newAdv);
 
@@ -91,7 +91,6 @@ public class TestUtil extends AsyncTask{
 
     public void pesquisarAnun(String id){
 
-
         Query query;
 
         query = eventReference.child("anuncio").equalTo(id);
@@ -102,7 +101,6 @@ public class TestUtil extends AsyncTask{
                 for (DataSnapshot objSnapshot:dataSnapshot.getChildren()){
                     Advertisement ad = objSnapshot.getValue(Advertisement.class);
                 }
-
             }
 
             @Override
@@ -110,12 +108,6 @@ public class TestUtil extends AsyncTask{
 
             }
         });
-
-
     }
 
-    @Override
-    protected Object doInBackground(Object[] objects) {
-        return null;
-    }
 }

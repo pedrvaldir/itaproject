@@ -15,7 +15,7 @@ public class AdvertisePreferences {
 
     public static Boolean getPreferedOrderAvaliad(Context context){
         SharedPreferences settings = context.getSharedPreferences(KEY_PREF_MENU, 0);
-        return settings.getBoolean(KEY_ORDER, false);
+        return settings.getBoolean(KEY_ORDER, true);
     }
 
     public static void setPreferedOrderAvaliad(Context context, int id){

@@ -19,6 +19,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -63,6 +65,7 @@ public class AllAdvertisementActivity extends AppCompatActivity  {
         mRecyViewAnun.setHasFixedSize(true);
 
         mClickListener = newListener();
+
         loadAnunciosData();
 
 
@@ -73,11 +76,12 @@ public class AllAdvertisementActivity extends AppCompatActivity  {
 
             @Override
             public void onListItemClick(int clickedItemIndex) {
-                String returns = mListAnunc.get(clickedItemIndex).getmId();
+
+              Advertisement atualAdvertisement = listaAdvertisements.get(clickedItemIndex);
 
                 Intent startActivityAnuncioCompteted = new Intent(mContext, AdvertisementActivity.class);
 
-                startActivityAnuncioCompteted.putExtra(Intent.EXTRA_TEXT, returns);
+                startActivityAnuncioCompteted.putExtra(Intent.EXTRA_TEXT, atualAdvertisement);
 
                 startActivity(startActivityAnuncioCompteted);
             }
@@ -85,7 +89,6 @@ public class AllAdvertisementActivity extends AppCompatActivity  {
     }
 
     private void loadAnunciosData() {
-        final ArrayList<Advertisement> listaAdvert = new ArrayList<>();
 
          final long[] childCount = {0};
 
@@ -98,15 +101,12 @@ public class AllAdvertisementActivity extends AppCompatActivity  {
                 for (DataSnapshot objSnapShot : dataSnapshot.getChildren()) {
                     Advertisement adv = objSnapShot.getValue(Advertisement.class);
                     childCount[0]++;
-                    listaAdvert.add(adv);
-
+                    listaAdvertisements.add(adv);
                 }
 
                 if (childCount[0] == dataSnapshot.getChildrenCount()){
 
-                    mAdapterAnun = new AdvertAdapter(mClickListener, listaAdvert);
-
-                    mRecyViewAnun.setAdapter(mAdapterAnun);
+                    loadAdvertisement();
                 }
 
             }
@@ -142,20 +142,51 @@ public class AllAdvertisementActivity extends AppCompatActivity  {
         int id = item.getItemId();
         switch (id) {
             case R.id.action_check_avalua:
-                item.setChecked(!item.isChecked());
-
+                OrderList();
             case R.id.action_check_default:
                 item.setChecked(!item.isChecked());
+                OrderList();
                 AdvertisePreferences.setPreferedOrderAvaliad(this, id);
                 break;
             case R.id.action_refresh:
-                addAnuncioTest();
-
+                loadAdvertisement();
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    public void addAnuncioTest() {
+    public void OrderList(){
+
+       Boolean orderbyMostAval = AdvertisePreferences.getPreferedOrderAvaliad(this);
+
+        if (orderbyMostAval != true) {
+            Collections.sort(listaAdvertisements, new OrderAdvertisement());
+        }else {
+            Collections.sort(listaAdvertisements, new OrderAdvertisementAlfa());
+        }
+
+        loadAdvertisement();
+
+    }
+
+    class OrderAdvertisement implements Comparator<Advertisement>{
+        public int compare(Advertisement o1, Advertisement o2){
+            if (o1.getAvaliado() < o2.getAvaliado()) return +1;
+            else if (o1.getAvaliado() > o2.getAvaliado()) return -1;
+            else return 0;
+        }
+    }
+
+    class OrderAdvertisementAlfa implements Comparator<Advertisement>{
+        public int compare(Advertisement adv, Advertisement adv2){
+            return adv.getmTitulo().compareTo(adv2.getmTitulo());
+        }
+    }
+
+    private void loadAdvertisement(){
+
+        mAdapterAnun = new AdvertAdapter(mClickListener, listaAdvertisements);
+
+        mRecyViewAnun.setAdapter(mAdapterAnun);
     }
 }

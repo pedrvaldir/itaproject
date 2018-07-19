@@ -45,80 +45,97 @@
                     android:src="@drawable/food" />
             </LinearLayout>
         </HorizontalScrollView>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="10dp">
+
             <TextView
-                android:paddingTop="10dp"
                 android:id="@+id/tv_title_advertisement"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
+                android:paddingTop="10dp"
                 android:textColor="@android:color/holo_green_dark"
-                android:textSize="21sp"
-                android:text="EMPRESA 01    "/>
+                android:textSize="21sp" />
+
             <TextView
-            style="@style/advertisement_desc_tv"
-            android:textSize="18sp"
-            android:id="@+id/tv_desc_anuncio"
-            android:text="Descrição da empresa "/>
+                android:id="@+id/tv_desc_anuncio"
+                style="@style/advertisement_desc_tv"
+                android:textSize="18sp" />
+
             <TextView
+                android:id="@+id/rating"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:id="@+id/rating"
-                android:text="Avaliado"/>
+                android:textSize="18sp" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_margin="15dp"
-                android:background="#BBBBBB"/>
+                android:background="#BBBBBB" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/advertisement_titles_tv"
+                    android:text="Possui WIFI: " />
+
+                <TextView
+                    android:id="@+id/tv_contains_wifi"
+                    style="@style/advertisement_desc_tv"
+                    android:textSize="20dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv__title_hr_funcionam"
+                style="@style/advertisement_titles_tv"
+                android:paddingTop="10dp"
+                android:text="Horário de Funcionamento:" />
+
+            <TextView
+                android:id="@+id/tv_horafuncio_advertisement"
+                style="@style/advertisement_desc_tv" />
+
+            <TextView
+                style="@style/advertisement_titles_tv"
+                android:text="Formas de pagamentos:" />
+
+            <TextView
+                android:id="@+id/tv_formas_pag_advertisement"
+                style="@style/advertisement_desc_tv" />
+
+            <TextView
+                style="@style/advertisement_titles_tv"
+                android:text="Telefone para Contato:" />
+
+            <TextView
+                android:id="@+id/tv_tel_contato_advertisement"
+                style="@style/advertisement_desc_tv" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
                     style="@style/advertisement_titles_tv"
-                    android:text="Possui WIFI: "/>
+                    android:text="Contato via WhatsApp:" />
                 <TextView
-                    android:textSize="20dp"
-                    style="@style/advertisement_desc_tv"
-                    android:text="Sim"/>
+                    android:id="@+id/tv_contains_whatsap"
+                    style="@style/advertisement_desc_tv" />
             </LinearLayout>
-            <TextView
-                style="@style/advertisement_titles_tv"
-                android:paddingTop="10dp"
-                android:id="@+id/tv__title_hr_funcionam"
-                android:text="Horário de Funcionamento:"/>
 
-            <TextView
-                android:id="@+id/tv_horafuncio_advertisement"
-                style="@style/advertisement_desc_tv"
-                android:text="Seg a Sex: 8h às 18h" />
-            <TextView
-                style="@style/advertisement_titles_tv"
-                android:text="Formas de pagamentos:"/>
-
-            <TextView
-                style="@style/advertisement_desc_tv"
-                android:id="@+id/tv_formas_pag_advertisement"
-                android:text="Dinheiro - Cartão de Credito"/>
-            <TextView
-                style="@style/advertisement_titles_tv"
-                android:text="Telefone para Contato:"/>
-
-            <TextView
-                style="@style/advertisement_desc_tv"
-                android:id="@+id/tv_tel_contato_advertisement"
-                android:text="(15) 3531 - 1748"/>
             <TextView
                 style="@style/advertisement_titles_tv"
                 android:text="Localização:" />
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:src="@drawable/ex_maps"/>
+                android:src="@drawable/ex_maps" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

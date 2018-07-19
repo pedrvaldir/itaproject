@@ -69,8 +69,20 @@ public class Advertisement implements Parcelable {
         return mId;
     }
 
-    public String getTitulo() {
+    public String getmTitulo() {
         return mTitulo;
+    }
+
+    public String getmDescricao() {
+        return mDescricao;
+    }
+
+    public int getmAvaliado() {
+        return mAvaliado;
+    }
+
+    public int getmImg() {
+        return mImg;
     }
 
     public String getDescricao() {
@@ -115,6 +127,7 @@ public class Advertisement implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(mId);
         parcel.writeString(mTitulo);
         parcel.writeString(mDescricao);
         parcel.writeString(mHorarAtendimento);

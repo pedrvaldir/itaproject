@@ -25,6 +25,7 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
     private ArrayList<Advertisement> mListAnunc;
     final private ListItemAnunClickListener mOnClickListener;
     private int viewHolderCount;
+    private int positionList;
 
     public AdvertAdapter(ListItemAnunClickListener listner, ArrayList<Advertisement> listAnunc){
         mOnClickListener = listner;
@@ -58,6 +59,7 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
         //final long id = mCursor.getLong(mCursor.getColumnIndex(AdvertiseContract.AnuncioEntrada._ID));
 
         Log.d(TAG, "#" + position);
+        positionList = position;
         holder.bind();
 
     //    holder.itemView.setTag(id);
@@ -89,9 +91,9 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
         }
 
         void bind(){
-            nameTextView.setText("TITULO");
-            descTextView.setText("DESCRICAO");
-            avaliadoTextView.setText("AVALIDADO");
+            nameTextView.setText(mListAnunc.get(positionList).getmTitulo());
+            descTextView.setText(mListAnunc.get(positionList).getmDescricao());
+            avaliadoTextView.setText(Integer.toString(mListAnunc.get(positionList).getmAvaliado()));
         }
 
         @Override
