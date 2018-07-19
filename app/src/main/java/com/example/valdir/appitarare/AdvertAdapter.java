@@ -7,7 +7,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import android.widget.TextView;
+
 
 import java.util.ArrayList;
 
@@ -20,12 +22,13 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
     private static final String TAG = AdvertAdapter.class.getSimpleName();
 
     private ArrayList<Advertisement> mListAnunc;
-    private Context context;
     final private ListItemAnunClickListener mOnClickListener;
+    private int viewHolderCount;
 
     public AdvertAdapter(ListItemAnunClickListener listner, ArrayList<Advertisement> listAnunc){
         mOnClickListener = listner;
         mListAnunc = listAnunc;
+        viewHolderCount = 0;
     }
 
     public interface ListItemAnunClickListener {
@@ -42,21 +45,30 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
         View view = inflater.inflate(layoutIdForListItem, parent, shouldAttachToParentImmediately);
         AnunViewHolder anunViewHolder = new AnunViewHolder(view);
 
+
+        viewHolderCount++;
+
         return anunViewHolder;
     }
 
     @Override
     public void onBindViewHolder(AnunViewHolder holder, int position) {
 
+        //final long id = mCursor.getLong(mCursor.getColumnIndex(AdvertiseContract.AnuncioEntrada._ID));
+
         Log.d(TAG, "#" + position);
         holder.bind();
 
+    //    holder.itemView.setTag(id);
     }
 
     @Override
     public int getItemCount() {
         return 7;
     }
+
+
+
 
     class AnunViewHolder extends RecyclerView.ViewHolder
             implements View.OnClickListener {

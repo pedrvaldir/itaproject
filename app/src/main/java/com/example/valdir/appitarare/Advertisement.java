@@ -3,11 +3,14 @@ package com.example.valdir.appitarare;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.UUID;
+
 /**
  * Created by VALDIR on 13/07/2018.
  */
 
 public class Advertisement implements Parcelable {
+    private String mId;
     private String mTitulo;
     private String mDescricao;
     private String mHorarAtendimento;
@@ -18,7 +21,8 @@ public class Advertisement implements Parcelable {
     private int mWifi;
     private int mWhatsApp;
 
-    public Advertisement(String titulo, String descricao, String atendimento, String formasPagamento, String contato, int img, int avaliado, int    wifi, int whatsApp) {
+    public Advertisement(String id, String titulo, String descricao, String atendimento, String formasPagamento, String contato, int img, int avaliado, int    wifi, int whatsApp) {
+        this.mId = id;
         this.mTitulo = titulo;
         this.mDescricao = descricao;
         this.mHorarAtendimento = atendimento;
@@ -35,6 +39,7 @@ public class Advertisement implements Parcelable {
     }
 
     protected Advertisement(Parcel in) {
+        mId = in.readString();
         mTitulo = in.readString();
         mDescricao = in.readString();
         mHorarAtendimento = in.readString();
@@ -56,6 +61,48 @@ public class Advertisement implements Parcelable {
         }
     };
 
+    public void setUid(String id){
+        this.mId =  id;
+    }
+
+    public String getmId(){
+        return mId;
+    }
+
+    public String getTitulo() {
+        return mTitulo;
+    }
+
+    public String getDescricao() {
+        return mDescricao;
+    }
+
+    public int getImg() {
+        return mImg;
+    }
+
+    public int getAvaliado(){
+        return mAvaliado;}
+
+    public String getmHorarAtendimento() {
+        return mHorarAtendimento;
+    }
+
+    public String getmFormasPagamento() {
+        return mFormasPagamento;
+    }
+
+    public String getmTelContato() {
+        return mTelContato;
+    }
+
+    public int getmWhatsApp() {
+        return mWhatsApp;
+    }
+
+    public int getmWifi() {
+        return mWifi;
+    }
 
     public String toString(){
         return mTitulo + "--" + mDescricao + "---";

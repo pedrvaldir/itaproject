@@ -7,12 +7,18 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.valdir.appitarare.data.AdvertisePreferences;
 import com.example.valdir.appitarare.data.TestUtil;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by VALDIR on 13/07/2018.
@@ -24,7 +30,10 @@ public class AllAdvertisementActivity extends AppCompatActivity implements Adver
     private RecyclerView mRecyViewAnun;
     private String opcClicked;
     private ArrayList<Advertisement> listaAdvertisements = new ArrayList<>();
+    public static DatabaseReference eventReference;
     private ArrayList<Advertisement> mListAnunc;
+    public int countList;
+    public  Toast mToast;
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -55,17 +64,29 @@ public class AllAdvertisementActivity extends AppCompatActivity implements Adver
         mAdapterAnun = new AdvertAdapter(this, mListAnunc);
 
         mRecyViewAnun.setAdapter(mAdapterAnun);
-
     }
 
     @Override
     public void onListItemClick(int clickedItemIndex) {
 
+
+        String returns = mListAnunc.get(clickedItemIndex).getmId();
+
         Intent startActivityAnuncioCompteted = new Intent(this, AdvertisementActivity.class);
 
-        startActivityAnuncioCompteted.putExtra(Intent.EXTRA_TEXT, "teste");
+        startActivityAnuncioCompteted.putExtra(Intent.EXTRA_TEXT, returns);
 
         startActivity(startActivityAnuncioCompteted);
+
+
+        // COMPLETED (12) Show a Toast when an item is clicked, displaying that item number that was clicked
+        /*
+         * Create a Toast and store it in our Toast field.
+         * The Toast that shows up will have a message similar to the following:
+         *
+         *                     Item #42 clicked.
+         */
+
     }
 
     @Override
@@ -92,14 +113,14 @@ public class AllAdvertisementActivity extends AppCompatActivity implements Adver
         switch (id) {
             case R.id.action_check_avalua:
                 item.setChecked(!item.isChecked());
-                TestUtil.insertFakeData();
+
             case R.id.action_check_default:
                 item.setChecked(!item.isChecked());
                 AdvertisePreferences.setPreferedOrderAvaliad(this, id);
                 break;
             case R.id.action_refresh:
                 addAnuncioTest();
-                TestUtil.insertFakeData();
+
                 break;
         }
         return super.onOptionsItemSelected(item);
