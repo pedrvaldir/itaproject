@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">AppItarare</string>
+    <string name="KEY_PREFS_MENU">id_menu_pref</string>
+    <string name="key_prefs_order">order_avaliado</string>
+
+    <string name="prompt_yes">SIM</string>
+    <string name="prompt_no">NÃO</string>
+    <string name="insert_data_success">Adicionado com sucesso!</string>
 </resources>

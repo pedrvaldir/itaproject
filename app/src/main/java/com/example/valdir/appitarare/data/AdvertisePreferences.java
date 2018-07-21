@@ -10,19 +10,22 @@ import com.example.valdir.appitarare.R;
  */
 
 public class AdvertisePreferences {
-    private static final String KEY_PREF_MENU = "id_menu_pref";
-    private static final String KEY_ORDER = "order_avaliado";
 
-    public static Boolean getPreferedOrderAvaliad(Context context){
-        SharedPreferences settings = context.getSharedPreferences(KEY_PREF_MENU, 0);
-        return settings.getBoolean(KEY_ORDER, true);
+    private static SharedPreferences buildSettings(Context context) {
+        return context.getSharedPreferences(context.getString(R.string.KEY_PREFS_MENU), 0);
     }
 
-    public static void setPreferedOrderAvaliad(Context context, int id){
-        SharedPreferences settings = context.getSharedPreferences(KEY_PREF_MENU, 0);
-        SharedPreferences.Editor editor = settings.edit();
+    public static Boolean getPreferredOrderRated(Context context){
+        return buildSettings(context).
+                getBoolean(context.getString(R.string.key_prefs_order), true);
+    }
+
+    public static void setPreferredOrderRated(Context context, int id){
         Boolean popularChecked = (id == R.id.action_check_avalua);
-        editor.putBoolean(KEY_ORDER, popularChecked);
+
+        SharedPreferences.Editor editor = buildSettings(context).edit();
+
+        editor.putBoolean(context.getString(R.string.key_prefs_order), popularChecked);
         editor.apply();
     }
 }

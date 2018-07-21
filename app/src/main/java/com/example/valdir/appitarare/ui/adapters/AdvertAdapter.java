@@ -1,7 +1,6 @@
-package com.example.valdir.appitarare;
+package com.example.valdir.appitarare.ui.adapters;
 
 import android.content.Context;
-import android.database.Cursor;
 
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -11,6 +10,9 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+
+import com.example.valdir.appitarare.R;
+import com.example.valdir.appitarare.model.Advertisement;
 
 import java.util.ArrayList;
 
@@ -24,13 +26,11 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
 
     private ArrayList<Advertisement> mListAnunc;
     final private ListItemAnunClickListener mOnClickListener;
-    private int viewHolderCount;
     private int positionList;
 
     public AdvertAdapter(ListItemAnunClickListener listner, ArrayList<Advertisement> listAnunc){
         mOnClickListener = listner;
         mListAnunc = listAnunc;
-        viewHolderCount = 0;
     }
 
     public interface ListItemAnunClickListener {
@@ -39,30 +39,20 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
 
     @Override
     public AnunViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
-        int layoutIdForListItem = R.layout.list_item;
-        LayoutInflater inflater = LayoutInflater.from(context);
-        boolean shouldAttachToParentImmediately = false;
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
-        View view = inflater.inflate(layoutIdForListItem, parent, shouldAttachToParentImmediately);
+        View view = inflater.inflate(R.layout.list_item , parent, false);
+
         AnunViewHolder anunViewHolder = new AnunViewHolder(view);
-
-
-        viewHolderCount++;
 
         return anunViewHolder;
     }
 
     @Override
     public void onBindViewHolder(AnunViewHolder holder, int position) {
-
-        //final long id = mCursor.getLong(mCursor.getColumnIndex(AdvertiseContract.AnuncioEntrada._ID));
-
         Log.d(TAG, "#" + position);
         positionList = position;
         holder.bind();
-
-    //    holder.itemView.setTag(id);
     }
 
     @Override
@@ -70,11 +60,7 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
         return mListAnunc.size();
     }
 
-
-
-
-    class AnunViewHolder extends RecyclerView.ViewHolder
-            implements View.OnClickListener {
+    class AnunViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView nameTextView;
         TextView descTextView;
         TextView avaliadoTextView;
@@ -83,17 +69,17 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
         public AnunViewHolder(View itemView) {
             super(itemView);
 
-            nameTextView = (TextView) itemView.findViewById(R.id.tv_title_listitem);
-            descTextView = (TextView) itemView.findViewById(R.id.tv_descri_listitem);
+            nameTextView = itemView.findViewById(R.id.tv_title_listitem);
+            descTextView = itemView.findViewById(R.id.tv_descri_listitem);
             avaliadoTextView = itemView.findViewById(R.id.tv_rating);
 
             itemView.setOnClickListener(this);
         }
 
         void bind(){
-            nameTextView.setText(mListAnunc.get(positionList).getmTitulo());
-            descTextView.setText(mListAnunc.get(positionList).getmDescricao());
-            avaliadoTextView.setText(Integer.toString(mListAnunc.get(positionList).getmAvaliado()));
+            nameTextView.setText(mListAnunc.get(positionList).getTitulo());
+            descTextView.setText(mListAnunc.get(positionList).getDescricao());
+            avaliadoTextView.setText(String.valueOf(mListAnunc.get(positionList).getAvaliado()));
         }
 
         @Override
