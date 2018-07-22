@@ -20,14 +20,11 @@ public class CategAdapter extends RecyclerView.Adapter<CategAdapter.ViewHolder> 
 
     private static final String TAG = CategAdapter.class.getSimpleName();
     final private ListItemClickListener mOnClickListener;
-    private int mNumberItems;
     private ArrayList<String> mListCateg;
 
     public CategAdapter(ListItemClickListener listner, ArrayList categorias) {
-        mNumberItems = categorias.size();
         mOnClickListener = listner;
         mListCateg = categorias;
-
     }
 
     public interface ListItemClickListener {
@@ -53,7 +50,7 @@ public class CategAdapter extends RecyclerView.Adapter<CategAdapter.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return mNumberItems;
+        return mListCateg.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

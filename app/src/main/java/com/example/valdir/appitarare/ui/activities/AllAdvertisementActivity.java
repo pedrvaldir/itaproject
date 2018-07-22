@@ -16,6 +16,7 @@ import com.example.valdir.appitarare.data.AdvertisePreferences;
 import com.example.valdir.appitarare.model.Advertisement;
 import com.example.valdir.appitarare.ui.adapters.AdvertAdapter;
 import com.example.valdir.appitarare.util.Constants;
+import com.example.valdir.appitarare.util.Utils;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,6 +34,7 @@ import java.util.Comparator;
 public class AllAdvertisementActivity extends AppCompatActivity {
 
     private Context mContext;
+    private String mCategorie;
     private ProgressBar mProgressBar;
     private AdvertAdapter mAdapterAnun;
     private RecyclerView mRecyViewAnun;
@@ -43,6 +45,11 @@ public class AllAdvertisementActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_all_advertisement);
+
+        if (getIntent().getExtras() != null) {
+            mCategorie = getIntent().getExtras().getString(Intent.EXTRA_TEXT);
+            this.setTitle(mCategorie);
+        }
 
         mContext = this;
         mProgressBar = findViewById(R.id.progressBar);
@@ -82,31 +89,34 @@ public class AllAdvertisementActivity extends AppCompatActivity {
     private void loadAnunciosData() {
         final long[] childCount = {0};
 
-        setLoading(true);
-
         DatabaseReference eventReference = FirebaseDatabase.getInstance().getReference();
-        eventReference.child(Constants.CHILD_NAME_ANUNCIO).addValueEventListener(new ValueEventListener() {
+        eventReference
+                .child(Constants.CHILD_NAME_ANUNCIOS)
+                .child(Constants.CHILD_NAME_CATEGORIES)
+                .child(mCategorie)
+                .addValueEventListener(new ValueEventListener() {
 
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot objSnapShot : dataSnapshot.getChildren()) {
-                    Advertisement adv = objSnapShot.getValue(Advertisement.class);
-                    childCount[0]++;
-                    mListAdvertisement.add(adv);
-                }
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        mListAdvertisement.clear();
 
-                if (childCount[0] == dataSnapshot.getChildrenCount()) {
-                    setLoading(false);
-                    loadAdvertisement();
-                }
-            }
+                        for (DataSnapshot objSnapShot : dataSnapshot.getChildren()) {
+                            Advertisement adv = objSnapShot.getValue(Advertisement.class);
+                            childCount[0]++;
+                            mListAdvertisement.add(adv);
+                        }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+                        if (childCount[0] == dataSnapshot.getChildrenCount()) {
+                            setLoading(false);
+                            loadAdvertisement();
+                        }
+                    }
 
-            }
-        });
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
 
+                    }
+                });
     }
 
     private void setLoading(boolean isLoading) {
@@ -149,6 +159,9 @@ public class AllAdvertisementActivity extends AppCompatActivity {
             case R.id.action_refresh:
                 loadAdvertisement();
                 break;
+            case R.id.action_add_category:
+                Utils.FakeDataAdvertisement(mContext, mCategorie, false, mProgressBar, mRecyViewAnun);
+                break;
         }
 
         return super.onOptionsItemSelected(item);
@@ -157,23 +170,19 @@ public class AllAdvertisementActivity extends AppCompatActivity {
     public void OrderList() {
         Boolean orderbyMostAval = AdvertisePreferences.getPreferredOrderRated(this);
 
-        Collections.sort(mListAdvertisement,orderbyMostAval ?
+        Collections.sort(mListAdvertisement, orderbyMostAval ?
                 new OrderAdvertisementAlfa() : new OrderAdvertisement());
 
         mAdapterAnun.notifyDataSetChanged();
     }
 
     private void loadAdvertisement() {
-        mAdapterAnun = new AdvertAdapter(newListener(), mListAdvertisement);
-
-        mRecyViewAnun.setAdapter(mAdapterAnun);
-    }
-
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        outState.putParcelableArrayList(Constants.CHILD_NAME_ANUNCIO, mListAdvertisement);
-        super.onSaveInstanceState(outState);
+        if(mAdapterAnun == null){
+            mAdapterAnun = new AdvertAdapter(newListener(), mListAdvertisement);
+            mRecyViewAnun.setAdapter(mAdapterAnun);
+        } else{
+            mAdapterAnun.notifyDataSetChanged();
+        }
     }
 
     class OrderAdvertisement implements Comparator<Advertisement> {

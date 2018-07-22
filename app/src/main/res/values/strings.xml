@@ -1,9 +1,15 @@
 <resources>
-    <string name="app_name">AppItarare</string>
-    <string name="KEY_PREFS_MENU">id_menu_pref</string>
-    <string name="key_prefs_order">order_avaliado</string>
+    <string name="app_name" translatable="false">AppItarare</string>
+    <string name="key_prefs_menu" translatable="false">id_menu_pref</string>
+    <string name="key_prefs_order" translatable="false">order_avaliado</string>
 
-    <string name="prompt_yes">SIM</string>
+    <string name="prompt_add_category">Adicionar Categoria</string>
+    <string name="prompt_category">Categorias</string>
+    <string name="prompt_category_name">Categoria</string>
+    <string name="prompt_insert">Inserir</string>
     <string name="prompt_no">NÃO</string>
-    <string name="insert_data_success">Adicionado com sucesso!</string>
+    <string name="prompt_yes">SIM</string>
+
+    <string name="info_insert_data_success">Adicionado com sucesso!</string>
+
 </resources>

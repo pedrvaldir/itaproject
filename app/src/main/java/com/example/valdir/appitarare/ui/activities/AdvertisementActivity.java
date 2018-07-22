@@ -22,6 +22,8 @@ public class AdvertisementActivity extends AppCompatActivity {
 
         Advertisement advertisement = getAdvertisementValue();
 
+        this.setTitle(advertisement.getTitulo());
+
         TextView descAnuncio = findViewById(R.id.tv_desc_anuncio);
         TextView wifiAnuncio = findViewById(R.id.tv_contains_wifi);
         TextView whatsAnuncio = findViewById(R.id.tv_contains_whatsap);

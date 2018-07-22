@@ -12,7 +12,7 @@ import com.example.valdir.appitarare.R;
 public class AdvertisePreferences {
 
     private static SharedPreferences buildSettings(Context context) {
-        return context.getSharedPreferences(context.getString(R.string.KEY_PREFS_MENU), 0);
+        return context.getSharedPreferences(context.getString(R.string.key_prefs_menu), 0);
     }
 
     public static Boolean getPreferredOrderRated(Context context){

@@ -20,17 +20,21 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.activities.CategoryActivity"
-            android:label="Categories"
-            android:parentActivityName=".ui.activities.MainActivity"/>
+        <activity
+            android:name=".ui.activities.CategoryActivity"
+            android:label="Categorias"
+            android:launchMode="singleTask"
+            android:parentActivityName=".ui.activities.MainActivity" />
 
-        <activity android:name=".ui.activities.AllAdvertisementActivity"
-            android:label="AllAdvertisement"
-            android:parentActivityName=".ui.activities.CategoryActivity"/>
+        <activity
+            android:name=".ui.activities.AllAdvertisementActivity"
+            android:label="Anúncios"
+            android:launchMode="singleTask"
+            android:parentActivityName=".ui.activities.CategoryActivity" />
 
-        <activity android:name=".ui.activities.AdvertisementActivity"
-            android:label="Advertisement"
-            android:parentActivityName=".ui.activities.AllAdvertisementActivity"/>
+        <activity
+            android:name=".ui.activities.AdvertisementActivity"
+            android:parentActivityName=".ui.activities.AllAdvertisementActivity" />
 
     </application>
 
