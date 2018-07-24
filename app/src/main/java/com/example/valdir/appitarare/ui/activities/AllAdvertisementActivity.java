@@ -108,7 +108,7 @@ public class AllAdvertisementActivity extends AppCompatActivity {
 
                         if (childCount[0] == dataSnapshot.getChildrenCount()) {
                             setLoading(false);
-                            loadAdvertisement();
+                            OrderList();
                         }
                     }
 
@@ -151,10 +151,11 @@ public class AllAdvertisementActivity extends AppCompatActivity {
 
         switch (id) {
             case R.id.action_check_avalua:
+                OrderList();
             case R.id.action_check_default:
                 item.setChecked(!item.isChecked());
-                OrderList();
                 AdvertisePreferences.setPreferredOrderRated(this, id);
+                OrderList();
                 break;
             case R.id.action_refresh:
                 loadAdvertisement();
@@ -171,7 +172,11 @@ public class AllAdvertisementActivity extends AppCompatActivity {
         Boolean orderbyMostAval = AdvertisePreferences.getPreferredOrderRated(this);
 
         Collections.sort(mListAdvertisement, orderbyMostAval ?
-                new OrderAdvertisementAlfa() : new OrderAdvertisement());
+                new OrderAdvertisement() : new OrderAdvertisementAlfa());
+
+
+
+        loadAdvertisement();
 
         mAdapterAnun.notifyDataSetChanged();
     }

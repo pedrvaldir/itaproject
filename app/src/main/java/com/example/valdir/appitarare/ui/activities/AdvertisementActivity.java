@@ -41,8 +41,7 @@ public class AdvertisementActivity extends AppCompatActivity {
         wifiAnuncio.setText(getStringBooleanPrompt(advertisement.getWifi()));
         whatsAnuncio.setText(getStringBooleanPrompt(advertisement.getWhatsApp()));
 
-        //  TextView avaliadoAnuncio = (TextView) findViewById(R.id.)
-        //  TextView imgAnuncio = (TextView) findViewById(R.id.)
+
     }
 
     private Advertisement getAdvertisementValue() {

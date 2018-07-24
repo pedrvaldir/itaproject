@@ -29,8 +29,8 @@ public class Utils {
                     "8h as 18h",
                     "dinheiro e cartões",
                     "15 3531- 1748",
-                    90,
                     12312312,
+                    3,
                     0,
                     1);
 

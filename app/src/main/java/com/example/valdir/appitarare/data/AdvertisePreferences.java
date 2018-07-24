@@ -17,7 +17,7 @@ public class AdvertisePreferences {
 
     public static Boolean getPreferredOrderRated(Context context){
         return buildSettings(context).
-                getBoolean(context.getString(R.string.key_prefs_order), true);
+                getBoolean(context.getString(R.string.key_prefs_order), false);
     }
 
     public static void setPreferredOrderRated(Context context, int id){
