@@ -24,7 +24,7 @@ public class Utils {
             DatabaseReference eventReference = FirebaseDatabase.getInstance().getReference();
 
             Advertisement newAdv = new Advertisement(
-                    "EMPRESA 8",
+                    "u EMPRESA 8",
                     "Venha conhecer nosso ambiente .....",
                     "8h as 18h",
                     "dinheiro e cartões",

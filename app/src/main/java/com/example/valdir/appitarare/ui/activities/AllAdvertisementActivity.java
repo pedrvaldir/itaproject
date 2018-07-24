@@ -174,8 +174,6 @@ public class AllAdvertisementActivity extends AppCompatActivity {
         Collections.sort(mListAdvertisement, orderbyMostAval ?
                 new OrderAdvertisement() : new OrderAdvertisementAlfa());
 
-
-
         loadAdvertisement();
 
         mAdapterAnun.notifyDataSetChanged();
