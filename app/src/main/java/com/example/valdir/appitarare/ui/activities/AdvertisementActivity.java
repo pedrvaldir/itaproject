@@ -2,11 +2,14 @@ package com.example.valdir.appitarare.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.example.valdir.appitarare.R;
 import com.example.valdir.appitarare.model.Advertisement;
+import com.example.valdir.appitarare.ui.Fragments.ImgAdvFragment;
 
 /**
  * Created by VALDIR on 13/07/2018.
@@ -15,12 +18,18 @@ import com.example.valdir.appitarare.model.Advertisement;
 
 public class AdvertisementActivity extends AppCompatActivity {
 
+    private ImgAdvFragment imgAdvFragment;
+    private FragmentManager fragmentManager;
+    private FragmentTransaction fragmentTransaction;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_advertisement);
 
         Advertisement advertisement = getAdvertisementValue();
+
+        loadFragmentAdv();
 
         this.setTitle(advertisement.getTitulo());
 
@@ -59,6 +68,16 @@ public class AdvertisementActivity extends AppCompatActivity {
     private String getStringBooleanPrompt(int value) {
         return (value > 0) ?
                 getString(R.string.prompt_yes) : getString(R.string.prompt_no);
+    }
+
+    public void loadFragmentAdv(){
+
+        imgAdvFragment = new ImgAdvFragment();
+        fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.frag_adv, imgAdvFragment, "frament tela inicial");
+
+        fragmentTransaction.commit();
     }
 
 }

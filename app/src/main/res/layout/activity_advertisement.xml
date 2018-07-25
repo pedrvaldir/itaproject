@@ -8,43 +8,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="15dp">
-        <HorizontalScrollView
-            android:id="@+id/horizontalsrollview"
-            android:layout_width="wrap_content"
+        <FrameLayout
+            android:id="@+id/frag_adv"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            >
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="180dp">
-                <ImageView
-                    android:id="@+id/iv_advertisement"
-                    android:layout_width="220dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/empresa1" />
-                <View
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginRight="3dp"
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="#BBBBBB"/>
-                <ImageView
-                    android:layout_width="220dp"
-                    android:layout_height="match_parent"
-                    android:isScrollContainer="false"
-                    android:src="@drawable/empresa1"/>
-                <View
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginRight="3dp"
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="#BBBBBB"/>
-                <ImageView
-                    android:layout_width="220dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/food" />
-            </LinearLayout>
-        </HorizontalScrollView>
+            ></FrameLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
