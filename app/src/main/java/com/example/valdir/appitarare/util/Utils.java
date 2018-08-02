@@ -32,7 +32,9 @@ public class Utils {
                     12312312,
                     3,
                     0,
-                    1);
+                    1,
+                    -24.116688,
+                    -49.310048);
 
             eventReference
                     .child(Constants.CHILD_NAME_ANUNCIOS)

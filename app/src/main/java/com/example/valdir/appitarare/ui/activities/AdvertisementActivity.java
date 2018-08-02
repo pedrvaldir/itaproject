@@ -1,15 +1,18 @@
 package com.example.valdir.appitarare.ui.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.valdir.appitarare.R;
 import com.example.valdir.appitarare.model.Advertisement;
-import com.example.valdir.appitarare.ui.Fragments.ImgAdvFragment;
+import com.example.valdir.appitarare.ui.fragments.ImgAdvFragment;
+import com.example.valdir.appitarare.ui.fragments.MapsFragment;
 
 /**
  * Created by VALDIR on 13/07/2018.
@@ -22,12 +25,13 @@ public class AdvertisementActivity extends AppCompatActivity {
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_advertisement);
 
-        Advertisement advertisement = getAdvertisementValue();
+        final Advertisement advertisement = getAdvertisementValue();
 
         loadFragmentAdv();
 
@@ -37,7 +41,7 @@ public class AdvertisementActivity extends AppCompatActivity {
         TextView wifiAnuncio = findViewById(R.id.tv_contains_wifi);
         TextView whatsAnuncio = findViewById(R.id.tv_contains_whatsap);
         TextView tituloAnuncio = findViewById(R.id.tv_title_advertisement);
-        TextView telContato = findViewById(R.id.tv_tel_contato_advertisement);
+        final TextView telContato = findViewById(R.id.tv_tel_contato_advertisement);
         TextView formasPagamento = findViewById(R.id.tv_formas_pag_advertisement);
         TextView horarAtendimento = findViewById(R.id.tv_horafuncio_advertisement);
 
@@ -51,6 +55,17 @@ public class AdvertisementActivity extends AppCompatActivity {
         whatsAnuncio.setText(getStringBooleanPrompt(advertisement.getWhatsApp()));
 
 
+        telContato.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+
+                Uri uri = Uri.parse("tel:"+advertisement.getTelContato().toString());
+
+                Intent intent = new Intent(Intent.ACTION_DIAL, uri);
+
+                startActivity(intent);
+            }
+        });
     }
 
     private Advertisement getAdvertisementValue() {
@@ -75,9 +90,13 @@ public class AdvertisementActivity extends AppCompatActivity {
         imgAdvFragment = new ImgAdvFragment();
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
+
         fragmentTransaction.add(R.id.frag_adv, imgAdvFragment, "frament tela inicial");
 
+        fragmentTransaction.add(R.id.container, new MapsFragment(), "Maps Fragment" );
+
         fragmentTransaction.commit();
+
     }
 
 }

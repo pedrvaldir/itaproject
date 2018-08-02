@@ -8,5 +8,12 @@
         android:id="@+id/tv_item_categ"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Titulo" />
+        android:textSize="24dp"
+        android:text="Titulo"
+        android:paddingBottom="10dp"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorAccent"
+        />
 </LinearLayout>

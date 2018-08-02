@@ -23,10 +23,12 @@ public class Advertisement implements Parcelable {
     private int imagem;
     private int wifi;
     private int whatsApp;
+    private double longitude;
+    private double latitude;
 
     public Advertisement(String titulo, String descricao, String atendimento,
                          String formasPagamento, String contato, int img, int avaliado,
-                         int wifi, int whatsApp) {
+                         int wifi, int whatsApp, Double latitude, Double longitude) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.horarAtendimento = atendimento;
@@ -36,6 +38,8 @@ public class Advertisement implements Parcelable {
         this.avaliado = avaliado;
         this.wifi = wifi;
         this.whatsApp = whatsApp;
+        this.longitude = longitude;
+        this.latitude = latitude;
     }
 
     private Advertisement(Parcel in) {
@@ -49,6 +53,8 @@ public class Advertisement implements Parcelable {
         imagem = in.readInt();
         wifi = in.readInt();
         whatsApp = in.readInt();
+        latitude = in.readDouble();
+        longitude = in.readDouble();
     }
 
     public static final Creator<Advertisement> CREATOR = new Creator<Advertisement>() {
@@ -80,6 +86,8 @@ public class Advertisement implements Parcelable {
         parcel.writeInt(imagem);
         parcel.writeInt(wifi);
         parcel.writeInt(whatsApp);
+        parcel.writeDouble(longitude);
+        parcel.writeDouble(latitude);
     }
 
 
@@ -121,5 +129,13 @@ public class Advertisement implements Parcelable {
 
     public int getWhatsApp() {
         return whatsApp;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
     }
 }

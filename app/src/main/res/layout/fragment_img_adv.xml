@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".ui.Fragments.ImgAdvFragment">
+    tools:context=".ui.fragments.ImgAdvFragment">
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

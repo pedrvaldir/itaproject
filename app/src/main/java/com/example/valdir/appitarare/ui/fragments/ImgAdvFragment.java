@@ -1,4 +1,4 @@
-package com.example.valdir.appitarare.ui.Fragments;
+package com.example.valdir.appitarare.ui.fragments;
 
 
 import android.net.Uri;
