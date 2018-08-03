@@ -33,7 +33,7 @@ public class AdvertisementActivity extends AppCompatActivity {
 
         final Advertisement advertisement = getAdvertisementValue();
 
-        loadFragmentAdv();
+        loadFragmentAdv(advertisement.getLatitude(), advertisement.getLongitude());
 
         this.setTitle(advertisement.getTitulo());
 
@@ -41,7 +41,7 @@ public class AdvertisementActivity extends AppCompatActivity {
         TextView wifiAnuncio = findViewById(R.id.tv_contains_wifi);
         TextView whatsAnuncio = findViewById(R.id.tv_contains_whatsap);
         TextView tituloAnuncio = findViewById(R.id.tv_title_advertisement);
-        final TextView telContato = findViewById(R.id.tv_tel_contato_advertisement);
+        TextView telContato = findViewById(R.id.tv_tel_contato_advertisement);
         TextView formasPagamento = findViewById(R.id.tv_formas_pag_advertisement);
         TextView horarAtendimento = findViewById(R.id.tv_horafuncio_advertisement);
 
@@ -59,7 +59,7 @@ public class AdvertisementActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Uri uri = Uri.parse("tel:"+advertisement.getTelContato().toString());
+                Uri uri = Uri.parse("tel:"+advertisement.getTelContato());
 
                 Intent intent = new Intent(Intent.ACTION_DIAL, uri);
 
@@ -85,15 +85,23 @@ public class AdvertisementActivity extends AppCompatActivity {
                 getString(R.string.prompt_yes) : getString(R.string.prompt_no);
     }
 
-    public void loadFragmentAdv(){
+    public void loadFragmentAdv(double latitude, double longitude){
 
         imgAdvFragment = new ImgAdvFragment();
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
 
-        fragmentTransaction.add(R.id.frag_adv, imgAdvFragment, "frament tela inicial");
+        fragmentTransaction.add(R.id.frag_adv, imgAdvFragment, getString(R.string.TAG_FRAGMENT_IMAGE));
 
-        fragmentTransaction.add(R.id.container, new MapsFragment(), "Maps Fragment" );
+
+        Bundle bundle = new Bundle();
+        bundle.putDouble(getString(R.string.KEY_LATITUDE), latitude);
+        bundle.putDouble(getString(R.string.KEY_LONGITUDE), longitude);
+
+        MapsFragment mapsFrag = new MapsFragment();
+        mapsFrag.setArguments(bundle);
+
+        fragmentTransaction.add(R.id.container, mapsFrag, getString(R.string.TAG_FRAGMENT_MAPS) );
 
         fragmentTransaction.commit();
 

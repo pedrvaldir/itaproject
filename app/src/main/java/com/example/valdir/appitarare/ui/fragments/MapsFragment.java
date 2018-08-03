@@ -1,6 +1,5 @@
 package com.example.valdir.appitarare.ui.fragments;
 
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
 import com.example.valdir.appitarare.R;
@@ -14,15 +13,20 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsFragment extends SupportMapFragment implements OnMapReadyCallback {
 
-    private GoogleMap mMap;
+    private Double mLatitude;
+    private Double mLongitude;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Bundle bundle = getArguments();
+
+        mLatitude = bundle.getDouble(getString(R.string.KEY_LATITUDE));
+        mLongitude = bundle.getDouble(getString(R.string.KEY_LONGITUDE));
+
         getMapAsync(this);
     }
-
 
     /**
      * Manipulates the map once available.
@@ -35,19 +39,17 @@ public class MapsFragment extends SupportMapFragment implements OnMapReadyCallba
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
 
-        mMap.getUiSettings().setZoomControlsEnabled(true);
+        googleMap.getUiSettings().setZoomControlsEnabled(true);
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-24.116688, -49.310048);
+        LatLng sydney = new LatLng(mLatitude, mLongitude);
 
-        mMap.setMaxZoomPreference(Constants.MAX_ZOOM_PREF_MAPS);
-        mMap.setMinZoomPreference(Constants.MIN_ZOOM_PREF_MAPS);
+        googleMap.setMaxZoomPreference(Constants.MAX_ZOOM_PREF_MAPS);
+        googleMap.setMinZoomPreference(Constants.MIN_ZOOM_PREF_MAPS);
 
-
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 
 }
