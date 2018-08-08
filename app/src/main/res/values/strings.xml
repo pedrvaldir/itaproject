@@ -17,7 +17,8 @@
     <string name="title_activity_maps">Map</string>
     <string name="KEY_LATITUDE">latitude</string>
     <string name="KEY_LONGITUDE">longitude</string>
+    <string name="KEY_IMG_ADV">image</string>
     <string name="TAG_FRAGMENT_IMAGE">Frament tela inicial</string>
     <string name="TAG_FRAGMENT_MAPS">Maps Fragment</string>
-
+    <string name="key_title_Adv">titulo</string>
 </resources>

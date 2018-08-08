@@ -25,7 +25,7 @@ import com.squareup.picasso.Picasso;
 public class ImgAdvFragment extends Fragment {
 
     private ImageView imgAdver;
-    private TextView txtAdverTitle;
+    private String imgNameAdv;
 
 
     public ImgAdvFragment() {
@@ -35,12 +35,13 @@ public class ImgAdvFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_img_adv, container, false);
 
-        imgAdver =(ImageView) view.findViewById(R.id.img_fragment_adv);
+        imgAdver = view.findViewById(R.id.img_fragment_adv);
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageReference = storage.getReferenceFromUrl("gs://itarare-1530419471926.appspot.com/").child("img_example.jpg");
+        StorageReference storageReference = storage.getReferenceFromUrl(getString(R.string.URL_IMAGE_STORAGE_FIREBASE)).child("bifarma.JPG");
 
         //pegar tamanho da tela do celular
 

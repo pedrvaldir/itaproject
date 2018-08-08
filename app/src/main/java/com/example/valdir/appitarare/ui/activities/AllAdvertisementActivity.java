@@ -180,10 +180,10 @@ public class AllAdvertisementActivity extends AppCompatActivity {
     }
 
     private void loadAdvertisement() {
-        if(mAdapterAnun == null){
-            mAdapterAnun = new AdvertAdapter(newListener(), mListAdvertisement);
+        if (mAdapterAnun == null) {
+            mAdapterAnun = new AdvertAdapter(newListener(), mListAdvertisement, mCategorie);
             mRecyViewAnun.setAdapter(mAdapterAnun);
-        } else{
+        } else {
             mAdapterAnun.notifyDataSetChanged();
         }
     }

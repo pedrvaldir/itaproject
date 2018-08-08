@@ -20,14 +20,14 @@ public class Advertisement implements Parcelable {
     private String formasPagamento;
     private String telContato;
     private int avaliado;
-    private int imagem;
+    private String imagem;
     private int wifi;
     private int whatsApp;
     private double longitude;
     private double latitude;
 
     public Advertisement(String titulo, String descricao, String atendimento,
-                         String formasPagamento, String contato, int img, int avaliado,
+                         String formasPagamento, String contato, String img, int avaliado,
                          int wifi, int whatsApp, Double latitude, Double longitude) {
         this.titulo = titulo;
         this.descricao = descricao;
@@ -38,8 +38,8 @@ public class Advertisement implements Parcelable {
         this.avaliado = avaliado;
         this.wifi = wifi;
         this.whatsApp = whatsApp;
-        this.longitude = longitude;
         this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     private Advertisement(Parcel in) {
@@ -50,7 +50,7 @@ public class Advertisement implements Parcelable {
         formasPagamento = in.readString();
         telContato = in.readString();
         avaliado = in.readInt();
-        imagem = in.readInt();
+        imagem = in.readString();
         wifi = in.readInt();
         whatsApp = in.readInt();
         latitude = in.readDouble();
@@ -83,13 +83,12 @@ public class Advertisement implements Parcelable {
         parcel.writeString(formasPagamento);
         parcel.writeString(telContato);
         parcel.writeInt(avaliado);
-        parcel.writeInt(imagem);
+        parcel.writeString(imagem);
         parcel.writeInt(wifi);
         parcel.writeInt(whatsApp);
-        parcel.writeDouble(longitude);
         parcel.writeDouble(latitude);
+        parcel.writeDouble(longitude);
     }
-
 
     public String getId() {
         return id;
@@ -119,7 +118,7 @@ public class Advertisement implements Parcelable {
         return avaliado;
     }
 
-    public int getImagem() {
+    public String getImagem() {
         return imagem;
     }
 

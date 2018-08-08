@@ -29,12 +29,12 @@ public class Utils {
                     "8h as 18h",
                     "dinheiro e cartões",
                     "15 3531- 1748",
-                    12312312,
+                    "bifarma.JPG",
                     3,
                     0,
                     1,
-                    -24.116688,
-                    -49.310048);
+                    -24.115778,
+                    -49.310238);
 
             eventReference
                     .child(Constants.CHILD_NAME_ANUNCIOS)

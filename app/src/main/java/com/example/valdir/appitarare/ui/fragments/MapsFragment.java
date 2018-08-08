@@ -15,6 +15,7 @@ public class MapsFragment extends SupportMapFragment implements OnMapReadyCallba
 
     private Double mLatitude;
     private Double mLongitude;
+    private String mTitle;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class MapsFragment extends SupportMapFragment implements OnMapReadyCallba
 
         mLatitude = bundle.getDouble(getString(R.string.KEY_LATITUDE));
         mLongitude = bundle.getDouble(getString(R.string.KEY_LONGITUDE));
+        mTitle = bundle.getString(getString(R.string.key_title_Adv));
 
         getMapAsync(this);
     }
@@ -43,13 +45,12 @@ public class MapsFragment extends SupportMapFragment implements OnMapReadyCallba
         googleMap.getUiSettings().setZoomControlsEnabled(true);
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(mLatitude, mLongitude);
+        LatLng positionLocalAdv = new LatLng(mLatitude, mLongitude);
 
         googleMap.setMaxZoomPreference(Constants.MAX_ZOOM_PREF_MAPS);
         googleMap.setMinZoomPreference(Constants.MIN_ZOOM_PREF_MAPS);
 
-        googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        googleMap.addMarker(new MarkerOptions().position(positionLocalAdv).title(mTitle));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(positionLocalAdv));
     }
-
 }
