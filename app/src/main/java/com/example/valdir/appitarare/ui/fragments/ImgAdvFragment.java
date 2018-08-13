@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.valdir.appitarare.R;
+import com.example.valdir.appitarare.util.Constants;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -38,10 +39,10 @@ public class ImgAdvFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_img_adv, container, false);
 
-        imgAdver = view.findViewById(R.id.img_fragment_adv);
+        imgAdver =(ImageView) view.findViewById(R.id.img_fragment_adv);
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageReference = storage.getReferenceFromUrl(getString(R.string.URL_IMAGE_STORAGE_FIREBASE)).child("bifarma.JPG");
+        StorageReference storageReference = storage.getReferenceFromUrl(Constants.URL_IMAGE_STORAGE_FIREBASE).child("bifarma.JPG");
 
         //pegar tamanho da tela do celular
 

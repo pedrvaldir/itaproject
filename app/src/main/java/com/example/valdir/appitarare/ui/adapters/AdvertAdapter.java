@@ -89,8 +89,9 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
         }
 
         void bind() {
-
+            //TODO: persistencia de dados para img
             FirebaseStorage storage = FirebaseStorage.getInstance();
+
             StorageReference storageReference = storage.getReferenceFromUrl(Constants.URL_IMAGE_STORAGE_FIREBASE).child(mListAnunc.get(positionList).getImagem());
             storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override

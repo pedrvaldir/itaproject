@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.valdir.appitarare.R;
+import com.example.valdir.appitarare.data.SettingsFirebase;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -21,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
           Atraves do construtor do adapter seta a referencia, passando contexto, referencia xml e os dados
           por fim usa-se o ListView para alimentar a lista usando o setAdapter
         */
+
+        SettingsFirebase.getDataBase();
+
 
         Button btActivity = findViewById(R.id.btn_inic);
 

@@ -55,11 +55,11 @@ public class AdvertisementActivity extends AppCompatActivity {
         whatsAnuncio.setText(getStringBooleanPrompt(advertisement.getWhatsApp()));
 
 
-        telContato.setOnClickListener(new View.OnClickListener() {
+        telContato.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
 
-                Uri uri = Uri.parse("tel:" + advertisement.getTelContato());
+                Uri uri = Uri.parse("tel:"+advertisement.getTelContato());
 
                 Intent intent = new Intent(Intent.ACTION_DIAL, uri);
 
@@ -85,13 +85,14 @@ public class AdvertisementActivity extends AppCompatActivity {
                 getString(R.string.prompt_yes) : getString(R.string.prompt_no);
     }
 
-    public void loadFragmentAdv(double latitude, double longitude, String tituloAdv) {
+    public void loadFragmentAdv(double latitude, double longitude, String tituloAdv){
 
         imgAdvFragment = new ImgAdvFragment();
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
 
         fragmentTransaction.add(R.id.frag_adv, imgAdvFragment, getString(R.string.TAG_FRAGMENT_IMAGE));
+
 
         Bundle bundle = new Bundle();
 
@@ -103,10 +104,8 @@ public class AdvertisementActivity extends AppCompatActivity {
         MapsFragment mapsFrag = new MapsFragment();
         mapsFrag.setArguments(bundle);
 
-        fragmentTransaction.add(R.id.container, mapsFrag, getString(R.string.TAG_FRAGMENT_MAPS));
+        fragmentTransaction.add(R.id.container, mapsFrag, getString(R.string.TAG_FRAGMENT_MAPS) );
 
         fragmentTransaction.commit();
-
     }
-
 }
