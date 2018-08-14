@@ -89,6 +89,7 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
         }
 
         void bind() {
+
             //TODO: persistencia de dados para img
             FirebaseStorage storage = FirebaseStorage.getInstance();
 
