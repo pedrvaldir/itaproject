@@ -1,21 +1,17 @@
 package com.example.valdir.appitarare.ui.adapters;
 
-import android.net.Uri;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.example.valdir.appitarare.R;
 import com.example.valdir.appitarare.model.Advertisement;
-import com.example.valdir.appitarare.util.Constants;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -29,8 +25,7 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
 
     private ArrayList<Advertisement> mListAnunc;
     final private ListItemAnunClickListener mOnClickListener;
-    private int positionList;
-    private String mCateg;
+    private int mPosition;
 
     public AdvertAdapter(ListItemAnunClickListener listner, ArrayList<Advertisement> listAnunc) {
         mOnClickListener = listner;
@@ -40,7 +35,6 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
     public AdvertAdapter(ListItemAnunClickListener listner, ArrayList<Advertisement> listAnunc, String categ) {
         mOnClickListener = listner;
         mListAnunc = listAnunc;
-        mCateg = categ;
     }
 
     public interface ListItemAnunClickListener {
@@ -52,7 +46,6 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
         View view = inflater.inflate(R.layout.list_item, parent, false);
-
         AnunViewHolder anunViewHolder = new AnunViewHolder(view);
 
         return anunViewHolder;
@@ -60,9 +53,8 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
 
     @Override
     public void onBindViewHolder(AnunViewHolder holder, int position) {
-        Log.d(TAG, "#" + position);
-        positionList = position;
-        holder.bind();
+        mPosition = position;
+        holder.bind(mListAnunc.get(position));
     }
 
     @Override
@@ -88,31 +80,31 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
             itemView.setOnClickListener(this);
         }
 
-        void bind() {
+ void bind(final Advertisement advertisement) {
+            Picasso.get()
+                    .load(advertisement.getImagem())
+                    .networkPolicy(NetworkPolicy.OFFLINE)
+                    .into(imageView, new Callback() {
+                        @Override
+                        public void onSuccess() {
 
-            //TODO: persistencia de dados para img
-            FirebaseStorage storage = FirebaseStorage.getInstance();
+                        }
 
-            StorageReference storageReference = storage.getReferenceFromUrl(Constants.URL_IMAGE_STORAGE_FIREBASE).child(mListAnunc.get(positionList).getImagem());
-            storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                @Override
-                public void onSuccess(Uri uri) {
-                    imageView = itemView.findViewById(R.id.iv_listitem);
+                        @Override
+                        public void onError(Exception e) {
+                            Picasso.get()
+                                    .load(advertisement.getImagem())
+                                    .networkPolicy(NetworkPolicy.NO_CACHE)
+                                    .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
+                                    .into(imageView);
+                        }
+                    });
 
-                    Picasso.get().load(uri.toString()).into(imageView);
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
+            nameTextView.setText(advertisement.getTitulo());
 
-                }
-            });
+            descTextView.setText(advertisement.getDescricao());
 
-            nameTextView.setText(mListAnunc.get(positionList).getTitulo());
-
-            Picasso.get().load(storageReference.toString()).into(imageView);
-            descTextView.setText(mListAnunc.get(positionList).getDescricao());
-            avaliadoTextView.setText(String.valueOf(mListAnunc.get(positionList).getAvaliado()));
+            avaliadoTextView.setText(String.valueOf(advertisement.getAvaliado()));
         }
 
         @Override
