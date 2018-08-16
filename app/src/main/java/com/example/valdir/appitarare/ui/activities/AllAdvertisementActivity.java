@@ -13,7 +13,6 @@ import android.widget.ProgressBar;
 
 import com.example.valdir.appitarare.R;
 import com.example.valdir.appitarare.data.AdvertisePreferences;
-import com.example.valdir.appitarare.data.SettingsFirebase;
 import com.example.valdir.appitarare.model.Advertisement;
 import com.example.valdir.appitarare.ui.adapters.AdvertAdapter;
 import com.example.valdir.appitarare.util.Constants;
@@ -90,10 +89,7 @@ public class AllAdvertisementActivity extends AppCompatActivity {
     private void loadAnunciosData() {
         final long[] childCount = {0};
 
-
-
         DatabaseReference eventReference = FirebaseDatabase.getInstance().getReference();
-
 
         eventReference
                 .child(Constants.CHILD_NAME_ANUNCIOS)

@@ -80,8 +80,8 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
             itemView.setOnClickListener(this);
         }
 
- void bind(final Advertisement advertisement) {
-            Picasso.get()
+            void bind(final Advertisement advertisement) {
+                 Picasso.get()
                     .load(advertisement.getImagem())
                     .networkPolicy(NetworkPolicy.OFFLINE)
                     .into(imageView, new Callback() {

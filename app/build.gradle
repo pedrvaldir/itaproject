@@ -8,6 +8,7 @@ android {
         minSdkVersion 18
         targetSdkVersion 28
         versionCode 1
+        defaultConfig{ vectorDrawables.useSupportLibrary = true }
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -25,9 +26,10 @@ dependencies {
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    implementation 'com.squareup.picasso:picasso:2.71828'
+
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     implementation 'com.google.firebase:firebase-core:16.0.1'
+    implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.google.firebase:firebase-database:16.0.1'
     implementation 'com.google.firebase:firebase-storage:16.0.1'
     implementation 'com.google.android.gms:play-services-maps:15.0.1'

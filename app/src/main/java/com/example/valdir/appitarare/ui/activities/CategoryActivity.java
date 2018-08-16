@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,15 +14,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.example.valdir.appitarare.R;
-import com.example.valdir.appitarare.model.Advertisement;
 import com.example.valdir.appitarare.ui.adapters.CategAdapter;
 import com.example.valdir.appitarare.util.Constants;
 import com.example.valdir.appitarare.util.Utils;
-import com.google.android.gms.tasks.SuccessContinuation;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -61,6 +55,7 @@ public class CategoryActivity extends AppCompatActivity implements CategAdapter.
     }
 
     private void loadCategoriesData() {
+
         setLoading(true);
 
         final long[] childCount = {0};
