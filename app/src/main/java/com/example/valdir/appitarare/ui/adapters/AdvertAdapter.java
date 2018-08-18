@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.valdir.appitarare.R;
@@ -67,10 +68,13 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
         TextView descTextView;
         TextView avaliadoTextView;
         ImageView imageView;
+        LinearLayout mLinearLayoutItemImg;
 
 
         public AnunViewHolder(View itemView) {
             super(itemView);
+
+            mLinearLayoutItemImg = itemView.findViewById(R.id.linear_image_item);
 
             nameTextView = itemView.findViewById(R.id.tv_title_listitem);
             descTextView = itemView.findViewById(R.id.tv_descri_listitem);
@@ -80,7 +84,9 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
             itemView.setOnClickListener(this);
         }
 
+
             void bind(final Advertisement advertisement) {
+            if (!advertisement.getImagem().equals("")){
                  Picasso.get()
                     .load(advertisement.getImagem())
                     .networkPolicy(NetworkPolicy.OFFLINE)
@@ -98,7 +104,10 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
                                     .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
                                     .into(imageView);
                         }
-                    });
+                    });}
+                    else {
+                mLinearLayoutItemImg.setVisibility(View.GONE);
+            }
 
             nameTextView.setText(advertisement.getTitulo());
 

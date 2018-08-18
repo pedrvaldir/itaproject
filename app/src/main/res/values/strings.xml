@@ -7,7 +7,7 @@
     <string name="prompt_category">Categorias</string>
     <string name="prompt_category_name">Categoria</string>
     <string name="prompt_insert">Inserir</string>
-    <string name="prompt_no">NÃO</string>
+    <string name="prompt_no">Não informado</string>
     <string name="prompt_yes">SIM</string>
 
     <string name="info_insert_data_success">Adicionado com sucesso!</string>

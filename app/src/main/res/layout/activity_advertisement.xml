@@ -86,6 +86,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/tv_contains_wifi"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content">
@@ -197,6 +198,7 @@
                             android:text="WhatsApp:" />
 
                         <TextView
+                            android:id="@+id/tv_contains_whatsap"
                             style="@style/advertisement_desc_tv"
                             android:text="99731 - 2723" />
                     </LinearLayout>
@@ -227,36 +229,6 @@
 
             </FrameLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-
-
-
-                    <TextView
-                        android:id="@+id/tv_contains_whatsap"
-                        style="@style/advertisement_desc_tv"
-                        android:text="Não" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center">
-                    <TextView
-                        android:id="@+id/tv_contains_wifi"
-                        style="@style/advertisement_desc_tv"
-                        android:text="Não" />
-                </LinearLayout>
-            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
