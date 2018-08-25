@@ -15,47 +15,63 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+
 public class Utils {
     public static void FakeDataAdvertisement(final Context context, final String categorieName, boolean isNew,
                                              final ProgressBar progressBar, final RecyclerView recyclerView) {
+
         if (!categorieName.isEmpty()) {
             setLoading(true, progressBar, recyclerView);
 
-            DatabaseReference eventReference = FirebaseDatabase.getInstance().getReference();
+            ArrayList<Advertisement> arrayAdv = new ArrayList<>();
 
-            Advertisement newAdv = new Advertisement(
-                    "u EMPRESA 8",
-                    "Venha conhecer nosso ambiente .....",
-                    "8h as 18h",
-                    "dinheiro e cartões",
-                    "15 3531- 1748",
-                    "bifarma.JPG",
-                    3,
-                    0,
-                    "99521-3456",
-                    -24.115778,
-                    -49.310238);
+            arrayAdv.add(new Advertisement(
+                    "TESTE ",
+                    "1º dTESSET" ,  //descrição
+                    "ATENDIMENTO",                // atendimento
+                    "FORMA DE PAGAMENTO",    //pagamentos
+                    "CONTATO",                          //café
+                    "",               // imagem
+                    1,                                                   //wifi
+                    "WHATSAPP",                 //whats
+                    -24.108072,                     //latitude
+                    -49.326836));
 
-            eventReference
-                    .child(Constants.CHILD_NAME_ANUNCIOS)
-                    .child(Constants.CHILD_NAME_CATEGORIES)
-                    .child(categorieName)
-                    .push()
-                    .setValue(newAdv).onSuccessTask(new SuccessContinuation<Void, Object>() {
-                @NonNull
-                @Override
-                public Task<Object> then(@Nullable Void aVoid) throws Exception {
-                    setLoading(false, progressBar, recyclerView);
 
-                    Toast.makeText(context,
-                            context.getString(R.string.info_insert_data_success),
-                            Toast.LENGTH_LONG).show();
 
-                    return null;
-                }
-            });
+            for (int i=0; i<1; i++) {
+
+                setLoading(true, progressBar, recyclerView);
+
+                DatabaseReference eventReference = FirebaseDatabase.getInstance().getReference();
+
+                // utilizado para isnerir o Array Adv na lista
+
+
+                eventReference
+                        .child(Constants.CHILD_NAME_ANUNCIOS)
+                        .child(Constants.CHILD_NAME_CATEGORIES)
+                        .child(categorieName)
+                        .push()
+                        .setValue(arrayAdv.get(i)).onSuccessTask(new SuccessContinuation<Void, Object>() {
+                    @NonNull
+                    @Override
+                    public Task<Object> then(@Nullable Void aVoid) throws Exception {
+                        setLoading(false, progressBar, recyclerView);
+
+                        Toast.makeText(context,
+                                context.getString(R.string.info_insert_data_success),
+                                Toast.LENGTH_LONG).show();
+
+                        return null;
+                    }
+                });
+
+            }
         }
-    }
+        }
+
 
     private static void setLoading(boolean isLoading, ProgressBar progressBar, RecyclerView recyclerView) {
         if (isLoading) {

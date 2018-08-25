@@ -66,7 +66,7 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
     class AnunViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView nameTextView;
         TextView descTextView;
-        TextView avaliadoTextView;
+        TextView phoneTextView;
         ImageView imageView;
         LinearLayout mLinearLayoutItemImg;
 
@@ -78,7 +78,7 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
 
             nameTextView = itemView.findViewById(R.id.tv_title_listitem);
             descTextView = itemView.findViewById(R.id.tv_descri_listitem);
-            avaliadoTextView = itemView.findViewById(R.id.tv_rating);
+            phoneTextView = itemView.findViewById(R.id.tv_phone_contact_categ);
             imageView = itemView.findViewById(R.id.iv_listitem);
 
             itemView.setOnClickListener(this);
@@ -113,7 +113,8 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
 
             descTextView.setText(advertisement.getDescricao());
 
-            avaliadoTextView.setText(String.valueOf(advertisement.getAvaliado()));
+            phoneTextView.setText(advertisement.getTelContato());
+
         }
 
         @Override

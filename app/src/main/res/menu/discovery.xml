@@ -5,23 +5,26 @@
     tools:context=".ui.activities.AllAdvertisementActivity">
 
     <item
-        android:id="@+id/action_refresh"
-        android:title="action_refresh"
-        app:showAsAction="never"/>
-
-    <item
         android:id="@+id/action_add_category"
         android:title="@string/prompt_add_category"
         app:showAsAction="never"/>
 
-    <group android:checkableBehavior="single">
+    <!--
+
+     <item
+        android:id="@+id/action_refresh"
+        android:title="action_refresh"
+        app:showAsAction="never"/>
+
         <item
-            android:id="@+id/action_check_default"
-            android:title="padrao">
-        </item>
-        <item
-            android:title="Avaliado"
-            android:id="@+id/action_check_avalua">
-        </item>
-    </group>
+           <group android:checkableBehavior="single">
+               <item
+                   android:id="@+id/action_check_default"
+                   android:title="padrao">
+               </item>
+
+                   android:title="Avaliado"
+                   android:id="@+id/action_check_avalua">
+               </item>
+       </group> -->
 </menu>

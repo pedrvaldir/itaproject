@@ -21,11 +21,11 @@ public class AdvertisePreferences {
     }
 
     public static void setPreferredOrderRated(Context context, int id){
-        Boolean popularChecked = (id == R.id.action_check_avalua);
+//        Boolean popularChecked = (id == R.id.action_check_avalua);
 
-        SharedPreferences.Editor editor = buildSettings(context).edit();
+     //   SharedPreferences.Editor editor = buildSettings(context).edit();
 
-        editor.putBoolean(context.getString(R.string.key_prefs_order), popularChecked);
-        editor.apply();
+     //   editor.putBoolean(context.getString(R.string.key_prefs_order), popularChecked);
+     //   editor.apply();
     }
 }

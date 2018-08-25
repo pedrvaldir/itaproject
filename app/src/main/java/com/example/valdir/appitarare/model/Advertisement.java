@@ -19,7 +19,6 @@ public class Advertisement implements Parcelable {
     private String horarAtendimento;
     private String formasPagamento;
     private String telContato;
-    private int avaliado;
     private String imagem;
     private int wifi;
     private String whatsApp;
@@ -27,7 +26,7 @@ public class Advertisement implements Parcelable {
     private double latitude;
 
     public Advertisement(String titulo, String descricao, String atendimento,
-                         String formasPagamento, String contato, String img, int avaliado,
+                         String formasPagamento, String contato, String img,
                          int wifi, String whatsApp, Double latitude, Double longitude) {
         this.titulo = titulo;
         this.descricao = descricao;
@@ -35,7 +34,6 @@ public class Advertisement implements Parcelable {
         this.formasPagamento = formasPagamento;
         this.telContato = contato;
         this.imagem = img;
-        this.avaliado = avaliado;
         this.wifi = wifi;
         this.whatsApp = whatsApp;
         this.latitude = latitude;
@@ -49,7 +47,6 @@ public class Advertisement implements Parcelable {
         horarAtendimento = in.readString();
         formasPagamento = in.readString();
         telContato = in.readString();
-        avaliado = in.readInt();
         imagem = in.readString();
         wifi = in.readInt();
         whatsApp = in.readString();
@@ -82,7 +79,6 @@ public class Advertisement implements Parcelable {
         parcel.writeString(horarAtendimento);
         parcel.writeString(formasPagamento);
         parcel.writeString(telContato);
-        parcel.writeInt(avaliado);
         parcel.writeString(imagem);
         parcel.writeInt(wifi);
         parcel.writeString(whatsApp);
@@ -112,10 +108,6 @@ public class Advertisement implements Parcelable {
 
     public String getTelContato() {
         return telContato;
-    }
-
-    public int getAvaliado() {
-        return avaliado;
     }
 
     public String getImagem() {

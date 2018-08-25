@@ -133,48 +133,58 @@ public class AllAdvertisementActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuItem item;
+        // MenuItem item;
+
         getMenuInflater().inflate(R.menu.discovery, menu);
+            /* Retirado opc avaliado
+            Boolean popularChecked = AdvertisePreferences.getPreferredOrderRated(this);
 
-        Boolean popularChecked = AdvertisePreferences.getPreferredOrderRated(this);
+            item = (popularChecked) ?
+                    menu.findItem(R.id.action_check_avalua) :
+                    menu.findItem(R.id.action_check_default);
 
-        item = (popularChecked) ?
-                menu.findItem(R.id.action_check_avalua) :
-                menu.findItem(R.id.action_check_default);
-
-        item.setChecked(true);
-
+            item.setChecked(true);
+            */
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         int id = item.getItemId();
 
         switch (id) {
+            /* Retirado opc avaliado
             case R.id.action_check_avalua:
                 OrderList();
             case R.id.action_check_default:
                 item.setChecked(!item.isChecked());
                 AdvertisePreferences.setPreferredOrderRated(this, id);
-                OrderList();
+
                 break;
             case R.id.action_refresh:
                 loadAdvertisement();
                 break;
+                */
             case R.id.action_add_category:
                 Utils.FakeDataAdvertisement(mContext, mCategorie, false, mProgressBar, mRecyViewAnun);
                 break;
         }
 
+        OrderList();
+
         return super.onOptionsItemSelected(item);
     }
 
     public void OrderList() {
-        Boolean orderbyMostAval = AdvertisePreferences.getPreferredOrderRated(this);
 
-        Collections.sort(mListAdvertisement, orderbyMostAval ?
-                new OrderAdvertisement() : new OrderAdvertisementAlfa());
+        //Não utilizado pois não está implementado opc avaliado
+       // Boolean orderbyMostAval = AdvertisePreferences.getPreferredOrderRated(this);
+
+       // Collections.sort(mListAdvertisement, orderbyMostAval ?
+       //         new OrderAdvertisement() : new OrderAdvertisementAlfa());
+
+        Collections.sort(mListAdvertisement, new OrderAdvertisementAlfa());
 
         loadAdvertisement();
 
@@ -189,7 +199,7 @@ public class AllAdvertisementActivity extends AppCompatActivity {
             mAdapterAnun.notifyDataSetChanged();
         }
     }
-
+/* Retirado pois não está implementado opc avaliado
     class OrderAdvertisement implements Comparator<Advertisement> {
         public int compare(Advertisement o1, Advertisement o2) {
             if (o1.getAvaliado() < o2.getAvaliado()) return +1;
@@ -197,6 +207,7 @@ public class AllAdvertisementActivity extends AppCompatActivity {
             else return 0;
         }
     }
+*/
 
     class OrderAdvertisementAlfa implements Comparator<Advertisement> {
         public int compare(Advertisement adv, Advertisement adv2) {

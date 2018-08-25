@@ -3,69 +3,70 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="1dp"
-    android:layout_margin="10dp">
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp">
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp">
         <LinearLayout
             android:id="@+id/linear_image_item"
             android:layout_width="1dp"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:layout_gravity="center"
-            android:layout_weight="1">
+            android:layout_weight="2">
             <ImageView
                 android:id="@+id/iv_listitem"
-                android:layout_width="wrap_content"
-                android:layout_height="100dp"
-                android:layout_gravity="center_horizontal"
+                android:layout_width="95dp"
+                android:layout_height="95dp"
+                android:layout_gravity="center"
                 />
         </LinearLayout>
         <LinearLayout
             android:layout_width="1dp"
-            android:layout_weight="2"
+            android:layout_weight="4"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="8dp">
+            android:layout_gravity="center"
+            android:paddingLeft="6dp"
+            >
             <TextView
                 android:id="@+id/tv_title_listitem"
-                android:textSize="23sp"
-                android:paddingLeft="5dp"
+                android:textSize="18sp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Titulo"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/tv_descri_listitem"
-                android:layout_margin="5dp"
-                android:textSize="18sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="descricao" />
+                android:textAlignment="center"
+                />
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@mipmap/ic_contat"/>
                 <TextView
+                    android:id="@+id/tv_phone_contact_categ"
+                    android:textSize="18sp"
                     android:layout_marginLeft="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:text="Nota: "/>
-                <TextView
-                    android:id="@+id/tv_rating"
-                    android:textSize="14sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="avaliado"
-                    android:textColor="@color/colorAccent"
+                    android:text="3531-1748"
                     />
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/tv_descri_listitem"
+                android:textSize="13sp"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="descricao"
+                android:textAlignment="center"/>
         </LinearLayout>
-
     </LinearLayout>
     <View
         android:paddingTop="10dp"
@@ -73,5 +74,5 @@
         android:paddingRight="15dp"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/colorAccent"/>
+        android:background="@color/textColorFourth"/>
 </LinearLayout>

@@ -93,7 +93,6 @@ public class CategoryActivity extends AppCompatActivity implements CategAdapter.
     private void notifyDataChanged(ArrayList<String> newList) {
         mListCateg.clear();
         mListCateg.addAll(newList);
-
         mAdapterCateg.notifyDataSetChanged();
     }
 
