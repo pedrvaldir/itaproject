@@ -52,5 +52,7 @@ public class MapsFragment extends SupportMapFragment implements OnMapReadyCallba
 
         googleMap.addMarker(new MarkerOptions().position(positionLocalAdv).title(mTitle));
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(positionLocalAdv));
+
+        googleMap.animateCamera(CameraUpdateFactory.zoomTo(Constants.DEFAULT_ZOMM_MAPS));
     }
 }

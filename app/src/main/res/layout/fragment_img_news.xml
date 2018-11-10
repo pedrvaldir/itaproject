@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ui.fragments.ImgNewsFragment">
+    <ProgressBar
+        android:paddingTop="50dp"
+        android:id="@+id/progressBarNewsFragment"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_gravity="center|center_horizontal"
+        android:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/img_fragment_news"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:visibility="gone"/>
+</LinearLayout>

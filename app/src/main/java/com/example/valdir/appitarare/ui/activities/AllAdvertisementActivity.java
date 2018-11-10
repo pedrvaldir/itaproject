@@ -1,12 +1,15 @@
 package com.example.valdir.appitarare.ui.activities;
 
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -106,6 +109,7 @@ public class AllAdvertisementActivity extends AppCompatActivity {
                             Advertisement adv = objSnapShot.getValue(Advertisement.class);
                             childCount[0]++;
                             mListAdvertisement.add(adv);
+                            setLoading(true);
                         }
 
                         if (childCount[0] == dataSnapshot.getChildrenCount()) {
@@ -116,7 +120,6 @@ public class AllAdvertisementActivity extends AppCompatActivity {
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-
                     }
                 });
     }
@@ -135,7 +138,9 @@ public class AllAdvertisementActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // MenuItem item;
 
-        getMenuInflater().inflate(R.menu.discovery, menu);
+
+
+        //   getMenuInflater().inflate(R.menu.discovery, menu);
             /* Retirado opc avaliado
             Boolean popularChecked = AdvertisePreferences.getPreferredOrderRated(this);
 
@@ -145,7 +150,8 @@ public class AllAdvertisementActivity extends AppCompatActivity {
 
             item.setChecked(true);
             */
-        return true;
+
+        return  true;
     }
 
     @Override

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.valdir.appitarare.R;
@@ -26,6 +27,8 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
 
     private ArrayList<Advertisement> mListAnunc;
     final private ListItemAnunClickListener mOnClickListener;
+    private ProgressBar progressBar;
+    private ImageView imageView;
     private int mPosition;
 
     public AdvertAdapter(ListItemAnunClickListener listner, ArrayList<Advertisement> listAnunc) {
@@ -36,6 +39,7 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
     public AdvertAdapter(ListItemAnunClickListener listner, ArrayList<Advertisement> listAnunc, String categ) {
         mOnClickListener = listner;
         mListAnunc = listAnunc;
+
     }
 
     public interface ListItemAnunClickListener {
@@ -47,6 +51,10 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
         View view = inflater.inflate(R.layout.list_item, parent, false);
+
+        progressBar = view.findViewById(R.id.progressBar_list_item);
+
+
         AnunViewHolder anunViewHolder = new AnunViewHolder(view);
 
         return anunViewHolder;
@@ -60,6 +68,7 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
 
     @Override
     public int getItemCount() {
+
         return mListAnunc.size();
     }
 
@@ -67,7 +76,7 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
         TextView nameTextView;
         TextView descTextView;
         TextView phoneTextView;
-        ImageView imageView;
+
         LinearLayout mLinearLayoutItemImg;
 
 
@@ -81,32 +90,39 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
             phoneTextView = itemView.findViewById(R.id.tv_phone_contact_categ);
             imageView = itemView.findViewById(R.id.iv_listitem);
 
+
+
+            if (itemView != null) {
+                progressBar = (ProgressBar)
+                        itemView.findViewById(R.id.progressBar_list_item);
+                progressBar.setVisibility(View.VISIBLE);
+            }
+            //veja sua imagem
+            ImageView myImage = (ImageView)
+                    itemView.findViewById(R.id.iv_listitem);
+
             itemView.setOnClickListener(this);
         }
 
 
             void bind(final Advertisement advertisement) {
+
+
             if (!advertisement.getImagem().equals("")){
+
                  Picasso.get()
                     .load(advertisement.getImagem())
                     .networkPolicy(NetworkPolicy.OFFLINE)
-                    .into(imageView, new Callback() {
-                        @Override
-                        public void onSuccess() {
-
+                    .into(imageView, new ImageLoadedCallback(progressBar) {
+                        @Override public void onSuccess() {
+                            if (this.progressBar != null) {
+                                this.progressBar.setVisibility(View.GONE); }
                         }
+                    });
 
-                        @Override
-                        public void onError(Exception e) {
-                            Picasso.get()
-                                    .load(advertisement.getImagem())
-                                    .networkPolicy(NetworkPolicy.NO_CACHE)
-                                    .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
-                                    .into(imageView);
-                        }
-                    });}
-                    else {
-                mLinearLayoutItemImg.setVisibility(View.GONE);
+            }else {
+
+                mLinearLayoutItemImg.setVisibility(View.INVISIBLE);
             }
 
             nameTextView.setText(advertisement.getTitulo());
@@ -115,6 +131,7 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
 
             phoneTextView.setText(advertisement.getTelContato());
 
+
         }
 
         @Override
@@ -122,5 +139,23 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AnunViewHo
             int clickedPosition = getAdapterPosition();
             mOnClickListener.onListItemClick(clickedPosition);
         }
+
+        private class ImageLoadedCallback implements Callback {
+            ProgressBar progressBar;
+
+            public ImageLoadedCallback(ProgressBar progBar){
+                progressBar = progBar;
+            } @Override public void onSuccess() {
+
+            }
+
+            @Override
+            public void onError(Exception e) {
+
+            }
+        }
     }
+
 }
+
+

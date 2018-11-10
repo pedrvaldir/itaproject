@@ -5,17 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".ui.fragments.ImgAdvFragment">
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            <ProgressBar
+                android:paddingTop="50dp"
+                android:id="@+id/progressBarImgFragment"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_gravity="center|center_horizontal"
+                android:visibility="visible" />
+
             <ImageView
                 android:id="@+id/img_fragment_adv"
-                android:layout_width="350dp"
-                android:layout_height="250dp" />
-        </LinearLayout>
-    </HorizontalScrollView>
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:visibility="gone"/>
 </LinearLayout>

@@ -5,12 +5,15 @@
 
     <string name="prompt_add_category">Adicionar Categoria</string>
     <string name="prompt_category">Categorias</string>
+    <string name="prompt_news">Notícias</string>
     <string name="prompt_category_name">Categoria</string>
     <string name="prompt_insert">Inserir</string>
     <string name="prompt_no">Não informado</string>
     <string name="prompt_yes">SIM</string>
 
     <string name="info_insert_data_success">Adicionado com sucesso!</string>
+    <string name="news_fonte">Fonte:  </string>
+    <string name="date_public_news">Data da Publicação: </string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -19,7 +22,33 @@
     <string name="KEY_LONGITUDE">longitude</string>
     <string name="KEY_IMG_ADV">image</string>
     <string name="TAG_FRAGMENT_IMAGE">Frament tela inicial</string>
+    <string name="TAG_FRAGMENT_NEWS">Fragment news</string>
     <string name="TAG_FRAGMENT_MAPS">Maps Fragment</string>
     <string name="key_title_Adv">titulo</string>
     <string name="key_title_img">Image Adv</string>
+    <string name="key_title_img_news">Image News</string>
+    <string name="search_hint">Pesquisar</string>
+
+    <!-- HOME -->
+    <string name="title_icon_food">Comida - FastFood</string>
+    <string name="title_icon_farm">Farmácias - saúde</string>
+    <string name="title_icon_store">Lojas em geral</string>
+    <string name="title_icon_phone">Telefones Úteis</string>
+    <string name="title_icon_taxi">Táxi</string>
+    <string name="title_icon_beauty_esthetics">Beleza e Estética</string>
+
+    <string name="title_latest_news_home">Últimas notícias</string>
+
+    <string name="title_home_app">No appItararé vc encontra!</string>
+    <string name="title_activity_drawer">DrawerActivity</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+
+    <string name="action_settings">Settings</string>
 </resources>

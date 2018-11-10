@@ -1,5 +1,6 @@
 package com.example.valdir.appitarare.ui.activities;
 
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,14 +9,17 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.text.InputType;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
 import com.example.valdir.appitarare.R;
+import com.example.valdir.appitarare.data.SettingsFirebase;
 import com.example.valdir.appitarare.ui.adapters.CategAdapter;
 import com.example.valdir.appitarare.util.Constants;
 import com.example.valdir.appitarare.util.Utils;
@@ -46,6 +50,9 @@ public class CategoryActivity extends AppCompatActivity implements CategAdapter.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
+
+        //utilizado aqui quando essa activity estiver iniciando primeiro
+        //SettingsFirebase.getDataBase();
 
         mContext = this;
         mProgressBar = findViewById(R.id.progressBar);
@@ -98,7 +105,22 @@ public class CategoryActivity extends AppCompatActivity implements CategAdapter.
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.categories, menu);
+        //  getMenuInflater().inflate(R.menu.categories, menu);
+
+        MenuInflater inflater = getMenuInflater();
+
+        inflater.inflate(R.menu.menu_search, menu);
+
+
+        SearchManager searchManager =
+                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+
+        SearchView searchView =
+                (SearchView) menu.findItem(R.id.search).getActionView();
+
+        searchView.setSearchableInfo(
+                searchManager.getSearchableInfo(getComponentName()));
+
         return true;
     }
 

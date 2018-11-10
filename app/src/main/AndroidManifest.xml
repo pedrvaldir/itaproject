@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -21,18 +21,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activities.MainActivity" />
+        <meta-data
+            android:name="android.app.default_searchable"
+            android:value=".ui.activities.SearchResultsActivity" />
 
+        <activity android:name=".ui.activities.MainActivity">
+
+        </activity>
         <activity
             android:name=".ui.activities.CategoryActivity"
             android:label="Categorias"
-            android:launchMode="singleTask">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:launchMode="singleTask"
+            android:parentActivityName=".ui.activities.MainActivity" />
         <activity
             android:name=".ui.activities.AllAdvertisementActivity"
             android:label="Anúncios"
@@ -61,10 +61,43 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
         <activity
             android:name=".ui.fragments.MapsFragment"
-            android:label="@string/title_activity_maps">
+            android:label="@string/title_activity_maps" />
+        <activity
+            android:name=".ui.activities.SearchResultsActivity"
+            android:parentActivityName=".ui.activities.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+        <activity
+            android:name=".ui.activities.AllNewsActivity"
+            android:label="Notícias"
+            android:launchMode="singleTask"
+            android:parentActivityName=".ui.activities.MainActivity"></activity>
+        <activity
+            android:name=".ui.activities.NewsActivity"
+            android:label="Notícias"
+            android:launchMode="singleTask"
+            android:parentActivityName=".ui.activities.AllNewsActivity"></activity>
+        <activity
+            android:name=".ui.activities.DrawerActivity"
+            android:label="@string/title_activity_drawer">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
     </application>

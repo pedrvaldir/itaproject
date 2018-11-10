@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -35,162 +36,39 @@
             <!-- description -->
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/tv_desc_anuncio"
                 style="@style/advertisement_desc_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
-            <!-- view -->
+        </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_margin="15dp"
-                android:background="@color/colorPrimaryGrey" />
+        <!-- view -->
 
-            <!-- phone and wifi -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="10dp"
+            android:background="@color/colorPrimaryGrey" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+        <!-- phone and wifi -->
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3">
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center_vertical"
-                        android:src="@mipmap/ic_contat" />
-
-                    <FrameLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <TextView
-                                style="@style/advertisement_titles_tv"
-                                android:text="Telefone:" />
-
-                            <TextView
-                                android:id="@+id/tv_tel_contato_advertisement"
-                                style="@style/advertisement_desc_tv"
-                                android:text="(15) 3531 - 1748" />
-                        </LinearLayout>
-                    </FrameLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/tv_contains_wifi"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Possui Wifi" />
-
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center_horizontal"
-                            android:src="@mipmap/ic_wifi" />
-                    </LinearLayout>
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-            <!--Atendimento -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0">
-
-                    <TextView
-                        android:id="@+id/tv__title_hr_funcionam"
-                        style="@style/advertisement_titles_tv"
-                        android:text="Atendimento:" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/tv_horafuncio_advertisement"
-                        style="@style/advertisement_desc_tv"
-                        android:text="Segunda à sexta:   8h as 18h." />
-                </LinearLayout>
-            </LinearLayout>
-
-            <!--pagamento-->
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center_vertical"
-                        android:src="@mipmap/ic_payment" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            style="@style/advertisement_titles_tv"
-                            android:text="Formas de pagamento:" />
-
-                        <TextView
-                            android:id="@+id/tv_formas_pag_advertisement"
-                            style="@style/advertisement_desc_tv"
-                            android:layout_gravity="center_vertical"
-                            android:text="Dinheiro e Cartões ( elo, mastercard e visa)" />
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
-
-            <!--whatsapp-->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_weight="3">
 
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center_vertical"
-                    android:src="@mipmap/ic_wpp" />
+                    android:src="@mipmap/ic_contat" />
 
                 <FrameLayout
                     android:layout_width="wrap_content"
@@ -204,40 +82,170 @@
 
                         <TextView
                             style="@style/advertisement_titles_tv"
-                            android:text="WhatsApp:" />
+                            android:text="Telefone:" />
 
                         <TextView
-                            android:id="@+id/tv_contains_whatsap"
+                            android:id="@+id/tv_tel_contato_advertisement"
                             style="@style/advertisement_desc_tv"
-                            android:text="99731 - 2723" />
+                            android:text="(15) 3531 - 1748" />
                     </LinearLayout>
                 </FrameLayout>
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_margin="15dp"
-                android:background="@color/textColorFourth" />
-
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"></LinearLayout>
+                android:id="@+id/tv_contains_wifi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_weight="1">
 
-            <TextView
-                style="@style/advertisement_titles_tv"
-                android:text="Localização:" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:orientation="vertical">
 
-            <FrameLayout
-                android:id="@+id/container"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:focusableInTouchMode="false"
-                android:isScrollContainer="false">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Possui Wifi" />
 
-            </FrameLayout>
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@mipmap/ic_wifi" />
+                </LinearLayout>
+            </LinearLayout>
+
 
         </LinearLayout>
+
+        <!--Atendimento -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_vertical"
+                    app:srcCompat="@drawable/ic_clock_60dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv__title_hr_funcionam"
+                        style="@style/advertisement_titles_tv"
+                        android:text="Atendimento:" />
+
+                    <TextView
+                        android:id="@+id/tv_horafuncio_advertisement"
+                        style="@style/advertisement_desc_tv"
+                        android:text="Segunda à sexta:   8h as 18h." />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--pagamento-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@mipmap/ic_payment" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/advertisement_titles_tv"
+                        android:text="Formas de pagamento:" />
+
+                    <TextView
+                        android:id="@+id/tv_formas_pag_advertisement"
+                        style="@style/advertisement_desc_tv"
+                        android:layout_gravity="center_vertical"
+                        android:text="Dinheiro e Cartões ( elo, mastercard e visa)" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--whatsapp-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="43dp"
+                android:layout_height="43dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@mipmap/ic_wpp60dp" />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/advertisement_titles_tv"
+                        android:text="WhatsApp:" />
+
+                    <TextView
+                        android:id="@+id/tv_contains_whatsap"
+                        style="@style/advertisement_desc_tv"
+                        android:text="99731 - 2723" />
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="15dp"
+            android:background="@color/textColorFourth" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></LinearLayout>
+
+        <TextView
+            style="@style/advertisement_titles_tv"
+            android:text="Localização:" />
+
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:focusableInTouchMode="false"
+            android:isScrollContainer="false">
+
+        </FrameLayout>
     </LinearLayout>
 </ScrollView>
 

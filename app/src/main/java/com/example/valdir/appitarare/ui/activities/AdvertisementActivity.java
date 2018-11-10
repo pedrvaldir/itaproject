@@ -29,7 +29,6 @@ public class AdvertisementActivity extends AppCompatActivity {
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,8 +38,6 @@ public class AdvertisementActivity extends AppCompatActivity {
 
         loadFragmentAdv(advertisement.getLatitude(), advertisement.getLongitude(),
                 advertisement.getTitulo(), advertisement.getImagem());
-
-        this.setTitle(advertisement.getTitulo());
 
         TextView descAnuncio = findViewById(R.id.tv_desc_anuncio);
         LinearLayout wifiAnuncio = findViewById(R.id.tv_contains_wifi);
@@ -73,6 +70,7 @@ public class AdvertisementActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 
     private Advertisement getAdvertisementValue() {
@@ -102,11 +100,14 @@ public class AdvertisementActivity extends AppCompatActivity {
         imgAdvFragment = new ImgAdvFragment();
         imgAdvFragment.setArguments(bundleImg);
 
+
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
 
-        if (!imagem.equals(""))
+        if (!imagem.equals("")) {
             fragmentTransaction.add(R.id.frag_adv, imgAdvFragment, getString(R.string.TAG_FRAGMENT_IMAGE));
+
+        }
 
         Bundle bundle = new Bundle();
         bundle.putDouble(getString(R.string.KEY_LATITUDE), latitude);
@@ -121,4 +122,5 @@ public class AdvertisementActivity extends AppCompatActivity {
 
         fragmentTransaction.commit();
     }
+
 }
