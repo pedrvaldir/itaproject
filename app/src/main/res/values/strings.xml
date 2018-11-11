@@ -22,4 +22,6 @@
     <string name="TAG_FRAGMENT_MAPS">Maps Fragment</string>
     <string name="key_title_Adv">titulo</string>
     <string name="key_title_img">Image Adv</string>
+    <string name="navigation_drawer_open">open</string>
+    <string name="navigation_drawer_close">close</string>
 </resources>
